@@ -8,18 +8,15 @@ package concesionarioapp;
  *
  * @author Reverie Pink
  */
-public class InicioApp extends javax.swing.JFrame {
+public class interfaz_administrador extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(InicioApp.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(interfaz_administrador.class.getName());
 
     /**
-     * Creates new form InicioApp
+     * Creates new form interfaz_administrador
      */
-    public InicioApp() {
+    public interfaz_administrador() {
         initComponents();
-       lblfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/fondo.png")));
-
-
     }
 
     /**
@@ -31,34 +28,21 @@ public class InicioApp extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnentrar = new javax.swing.JButton();
-        lblfondo = new javax.swing.JLabel();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnentrar.setText("Entrar");
-        btnentrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnentrarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnentrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 390, 170, -1));
-
-        lblfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/fondo.png"))); // NOI18N
-        getContentPane().add(lblfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnentrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnentrarActionPerformed
-        // TODO add your handling code here:
-       sel_usuario nuevaVentana = new sel_usuario();  // Creamos una nueva instacia
-       nuevaVentana.setVisible(true);           // la mostramos poniendo el metodo set.Visible en true 
-       this.dispose();                          // con dispose cerramos la ventana actual
-
-        
-    }//GEN-LAST:event_btnentrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -82,11 +66,9 @@ public class InicioApp extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new InicioApp().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new interfaz_administrador().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnentrar;
-    private javax.swing.JLabel lblfondo;
     // End of variables declaration//GEN-END:variables
 }
