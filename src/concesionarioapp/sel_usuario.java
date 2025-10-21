@@ -4,6 +4,8 @@
  */
 package concesionarioapp;
 
+import java.io.IOException;
+
 /**
  *
  * @author Reverie Pink
@@ -38,6 +40,10 @@ public class sel_usuario extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         cbotipousuario = new javax.swing.JComboBox<>();
         btnaceptar = new javax.swing.JButton();
+        lblUsuario = new javax.swing.JLabel();
+        lblContraseña = new javax.swing.JLabel();
+        txtUsuario = new javax.swing.JTextField();
+        txtContraseña = new javax.swing.JTextField();
         lblimagenfondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -50,7 +56,7 @@ public class sel_usuario extends javax.swing.JFrame {
         jPanel1.setForeground(new java.awt.Color(0,  0, 0, 100));
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        cbotipousuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cliente", "Adimistrador" }));
+        cbotipousuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cliente", "Administrador" }));
 
         btnaceptar.setText("Aceptar");
         btnaceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -59,30 +65,54 @@ public class sel_usuario extends javax.swing.JFrame {
             }
         });
 
+        lblUsuario.setText("Usuario");
+
+        lblContraseña.setText("Contraseña");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addComponent(cbotipousuario, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(101, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnaceptar)
-                .addGap(138, 138, 138))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(cbotipousuario, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addContainerGap()
+                                    .addComponent(lblContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                    .addGap(58, 58, 58)
+                                    .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(18, 18, 18)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                                .addComponent(txtContraseña)))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(138, 138, 138)
+                            .addComponent(btnaceptar))))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addComponent(cbotipousuario, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addGap(31, 31, 31)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblUsuario)
+                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblContraseña)
+                    .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(cbotipousuario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(btnaceptar)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 370, 210));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 360, 220));
 
         lblimagenfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/imagen_fondo.png"))); // NOI18N
         getContentPane().add(lblimagenfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 480));
@@ -94,22 +124,49 @@ public class sel_usuario extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         //Se captura la opcion que se seleccionó y la convertimos a texto
-        String opcion = cbotipousuario.getSelectedItem().toString();
-
-          // Verificamos si el usuario eligió "Cliente"
-        if (opcion.equals("Cliente")) {
-               // Si eligió Cliente, abrimos la interfaz del cliente
-              new interfaz_cliente().setVisible(true);
-              
-              // Cierro la ventana actual para que no queden varias abiertas
-              this.dispose();
-} 
-          //lo mismo pasa con Admistrador
-          else if (opcion.equals("Administrador")) {
-             new interfaz_administrador().setVisible(true);
-             this.dispose();
+        String Usuario = txtUsuario.getText();
+        String Contraseña = txtContraseña.getText();
+        String tipoUsuario = cbotipousuario.getSelectedItem().toString();
+        
+        boolean acceso = false;
+        
+        if (Usuario.isEmpty() || Contraseña.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Por favor, completa todos los campos.");
+            return; // Detiene el método para no seguir ejecutando
 }
+        
+        try {
+            for (String linea : java.nio.file.Files.readAllLines(java.nio.file.Paths.get("baseDeDatos/usuarios.csv")) ){
+                String [] datos = linea.split(",");
+                
+                if (datos.length >= 3) {
+                    String user = datos[0];
+                    String contra = datos[1];
+                    String tpUser = datos[2];
+                    
+                    if (Usuario.equals(user) && Contraseña.equals(contra) && tipoUsuario.equalsIgnoreCase(tpUser)){
+                        acceso = true;
 
+                        if (tipoUsuario.equalsIgnoreCase("Administrador")){
+                            javax.swing.JOptionPane.showMessageDialog(this, "Bienvenido Administrador");
+                            new interfaz_administrador().setVisible(true);
+                            this.dispose();
+                        }
+                        else{
+                            javax.swing.JOptionPane.showMessageDialog(this, "Bienvenido Cliente");
+                            new interfaz_cliente().setVisible(true);
+                            this.dispose();
+                        }
+                        break;
+                    }
+                }
+            }
+        } catch (IOException ex) {
+            System.getLogger(sel_usuario.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        }
+        if (!acceso){
+            javax.swing.JOptionPane.showMessageDialog(this, "Usuario, contraseña o tipo de usuario incorrecto. Por favor ingresa los datos correctos");
+        }
     }//GEN-LAST:event_btnaceptarActionPerformed
 
     /**
@@ -141,7 +198,11 @@ public class sel_usuario extends javax.swing.JFrame {
     private javax.swing.JButton btnaceptar;
     private javax.swing.JComboBox<String> cbotipousuario;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblContraseña;
+    private javax.swing.JLabel lblUsuario;
     private javax.swing.JLabel lblimagenfondo;
     private javax.swing.JLabel lbllogo;
+    private javax.swing.JTextField txtContraseña;
+    private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
