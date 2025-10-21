@@ -33,6 +33,7 @@ public class InicioApp extends javax.swing.JFrame {
 
         btnentrar = new javax.swing.JButton();
         lblfondo = new javax.swing.JLabel();
+        btnCrearUsuario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -43,10 +44,18 @@ public class InicioApp extends javax.swing.JFrame {
                 btnentrarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnentrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 390, 170, -1));
+        getContentPane().add(btnentrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 310, 170, -1));
 
         lblfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/fondo.png"))); // NOI18N
-        getContentPane().add(lblfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(lblfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -100, -1, -1));
+
+        btnCrearUsuario.setText("Crear Usuario");
+        btnCrearUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCrearUsuarioActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnCrearUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 420, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -59,6 +68,13 @@ public class InicioApp extends javax.swing.JFrame {
 
         
     }//GEN-LAST:event_btnentrarActionPerformed
+
+    private void btnCrearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearUsuarioActionPerformed
+        // TODO add your handling code here:
+        CrearCuenta CrearCuenta = new CrearCuenta();
+        CrearCuenta.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnCrearUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -86,6 +102,7 @@ public class InicioApp extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCrearUsuario;
     private javax.swing.JButton btnentrar;
     private javax.swing.JLabel lblfondo;
     // End of variables declaration//GEN-END:variables
