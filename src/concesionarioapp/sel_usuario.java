@@ -43,7 +43,7 @@ public class sel_usuario extends javax.swing.JFrame {
         lblUsuario = new javax.swing.JLabel();
         lblContraseña = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
-        txtContraseña = new javax.swing.JTextField();
+        txtContraseña = new javax.swing.JPasswordField();
         lblimagenfondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -92,7 +92,7 @@ public class sel_usuario extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGap(138, 138, 138)
                             .addComponent(btnaceptar))))
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -109,10 +109,10 @@ public class sel_usuario extends javax.swing.JFrame {
                 .addComponent(cbotipousuario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnaceptar)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 360, 220));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 370, 230));
 
         lblimagenfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/imagen_fondo.png"))); // NOI18N
         getContentPane().add(lblimagenfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 480));
@@ -125,7 +125,7 @@ public class sel_usuario extends javax.swing.JFrame {
         
         //Se captura la opcion que se seleccionó y la convertimos a texto
         String Usuario = txtUsuario.getText();
-        String Contraseña = txtContraseña.getText();
+        String Contraseña = new String(txtContraseña.getPassword());
         String tipoUsuario = cbotipousuario.getSelectedItem().toString();
         
         boolean acceso = false;
@@ -202,7 +202,7 @@ public class sel_usuario extends javax.swing.JFrame {
     private javax.swing.JLabel lblUsuario;
     private javax.swing.JLabel lblimagenfondo;
     private javax.swing.JLabel lbllogo;
-    private javax.swing.JTextField txtContraseña;
+    private javax.swing.JPasswordField txtContraseña;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

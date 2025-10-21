@@ -32,8 +32,8 @@ public class InicioApp extends javax.swing.JFrame {
     private void initComponents() {
 
         btnentrar = new javax.swing.JButton();
-        lblfondo = new javax.swing.JLabel();
         btnCrearUsuario = new javax.swing.JButton();
+        lblfondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -44,10 +44,7 @@ public class InicioApp extends javax.swing.JFrame {
                 btnentrarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnentrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 310, 170, -1));
-
-        lblfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/fondo.png"))); // NOI18N
-        getContentPane().add(lblfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -100, -1, -1));
+        getContentPane().add(btnentrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, 170, -1));
 
         btnCrearUsuario.setText("Crear Usuario");
         btnCrearUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -55,7 +52,10 @@ public class InicioApp extends javax.swing.JFrame {
                 btnCrearUsuarioActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCrearUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 420, -1, -1));
+        getContentPane().add(btnCrearUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 460, -1, -1));
+
+        lblfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/fondo.png"))); // NOI18N
+        getContentPane().add(lblfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -53,7 +53,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="190" y="90" width="360" height="220"/>
+          <AbsoluteConstraints x="180" y="90" width="370" height="230"/>
         </Constraint>
       </Constraints>
 
@@ -87,7 +87,7 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="53" max="32767" attributes="0"/>
+                  <EmptySpace pref="63" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -108,7 +108,7 @@
                   <Component id="cbotipousuario" min="-2" pref="30" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btnaceptar" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="15" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -147,7 +147,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtUsuario">
         </Component>
-        <Component class="javax.swing.JTextField" name="txtContrase&#xf1;a">
+        <Component class="javax.swing.JPasswordField" name="txtContrase&#xf1;a">
         </Component>
       </SubComponents>
     </Container>
