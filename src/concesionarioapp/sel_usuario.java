@@ -44,6 +44,7 @@ public class sel_usuario extends javax.swing.JFrame {
         lblContraseña = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
         txtContraseña = new javax.swing.JPasswordField();
+        btnRetroceder = new javax.swing.JButton();
         lblimagenfondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -114,6 +115,14 @@ public class sel_usuario extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 370, 230));
 
+        btnRetroceder.setText("retroceder");
+        btnRetroceder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRetrocederActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnRetroceder, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 40, -1, -1));
+
         lblimagenfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/imagen_fondo.png"))); // NOI18N
         getContentPane().add(lblimagenfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 480));
 
@@ -169,6 +178,13 @@ public class sel_usuario extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnaceptarActionPerformed
 
+    private void btnRetrocederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetrocederActionPerformed
+        // TODO add your handling code here:
+        InicioApp inicioApp = new InicioApp();
+        inicioApp.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnRetrocederActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -195,6 +211,7 @@ public class sel_usuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnRetroceder;
     private javax.swing.JButton btnaceptar;
     private javax.swing.JComboBox<String> cbotipousuario;
     private javax.swing.JPanel jPanel1;

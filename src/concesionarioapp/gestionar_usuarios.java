@@ -184,7 +184,7 @@ public class gestionar_usuarios extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3"
+                "Usuarios", "Contraseñas", "Tipo de usuarios"
             }
         ));
         jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
