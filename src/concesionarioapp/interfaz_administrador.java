@@ -42,6 +42,11 @@ public class interfaz_administrador extends javax.swing.JFrame {
         btngestionusuarios.setText("Gestionar propetarios");
 
         btngestionusuarios1.setText("Gestionar usuarios");
+        btngestionusuarios1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btngestionusuarios1ActionPerformed(evt);
+            }
+        });
 
         btngestionusuarios2.setText("Gestionar vehiculos");
 
@@ -111,6 +116,14 @@ public class interfaz_administrador extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void btngestionusuarios1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btngestionusuarios1ActionPerformed
+        // TODO add your handling code here:
+        
+        gestionar_usuarios nuevaVentana = new gestionar_usuarios();  // Creamos una nueva instacia
+       nuevaVentana.setVisible(true);           // la mostramos poniendo el metodo set.Visible en true 
+       this.dispose(); 
+    }//GEN-LAST:event_btngestionusuarios1ActionPerformed
 
     /**
      * @param args the command line arguments
