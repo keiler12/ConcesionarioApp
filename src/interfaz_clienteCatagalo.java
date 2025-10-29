@@ -16,7 +16,60 @@ public class interfaz_clienteCatagalo extends javax.swing.JFrame {
      */
     public interfaz_clienteCatagalo() {
         initComponents();
+        cargarCatalogoCliente();
     }
+    
+    // Método para cargar los vehículos desde el CSV
+private void cargarCatalogoCliente() {
+    jPanel2.removeAll(); // Limpia el panel antes de actualizar
+
+    java.io.File archivo = new java.io.File("baseDeDatos/coches.csv");
+
+    if (!archivo.exists()) {
+        javax.swing.JLabel msg = new javax.swing.JLabel("No hay vehículos disponibles aún.");
+        jPanel2.add(msg);
+        jPanel2.revalidate();
+        jPanel2.repaint();
+        return;
+    }
+
+    try (var br = new java.io.BufferedReader(new java.io.FileReader(archivo))) {
+        String linea;
+        boolean primeraLinea = true; // Para saltar los encabezados
+        int y = 10;
+
+        while ((linea = br.readLine()) != null) {
+            if (primeraLinea) { 
+                primeraLinea = false; 
+                continue; 
+            }
+
+            String[] datos = linea.split(",");
+
+            if (datos.length == 5) {
+                javax.swing.JPanel item = new javax.swing.JPanel();
+                item.setLayout(new javax.swing.BoxLayout(item, javax.swing.BoxLayout.Y_AXIS));
+                item.setBorder(javax.swing.BorderFactory.createTitledBorder(datos[0] + " - " + datos[1]));
+
+                item.add(new javax.swing.JLabel("Año: " + datos[2]));
+                item.add(new javax.swing.JLabel("Precio: " + datos[3]));
+                item.add(new javax.swing.JLabel("Descripción: " + datos[4]));
+
+                item.setBounds(10, y, 400, 90);
+                y += 100;
+                jPanel2.add(item);
+            }
+        }
+    } catch (Exception e) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Error al cargar el catálogo: " + e.getMessage());
+    }
+
+    jPanel2.revalidate();
+    jPanel2.repaint();
+}
+
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,7 +83,8 @@ public class interfaz_clienteCatagalo extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btnactualizar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,7 +118,14 @@ public class interfaz_clienteCatagalo extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButton1.setText("Actualizar catalogo");
+        btnactualizar.setText("Actualizar catalogo");
+        btnactualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnactualizarActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Catálogo de Vehículos - Cliente ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -74,22 +135,34 @@ public class interfaz_clienteCatagalo extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 225, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(358, 358, 358)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(358, 358, 358)
+                        .addComponent(btnactualizar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(343, 343, 343)
+                        .addComponent(jLabel1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
+                .addGap(19, 19, 19)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(btnactualizar)
                 .addContainerGap(61, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnactualizarActionPerformed
+        // TODO add your handling code here:
+        cargarCatalogoCliente();
+    }//GEN-LAST:event_btnactualizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -117,7 +190,8 @@ public class interfaz_clienteCatagalo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnactualizar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
