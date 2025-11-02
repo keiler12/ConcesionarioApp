@@ -14,14 +14,15 @@ public class interfaz_clienteCatagalo extends javax.swing.JFrame {
     /**
      * Creates new form interfaz_clienteCatagalo
      */
-    public interfaz_clienteCatagalo() {
-        initComponents();
-        cargarCatalogoCliente();
-    }
-    
-    // Método para cargar los vehículos desde el CSV
+ public interfaz_clienteCatagalo() {
+    initComponents();
+    jPanel2.setLayout(new javax.swing.BoxLayout(jPanel2, javax.swing.BoxLayout.Y_AXIS));
+    cargarCatalogoCliente();
+}
+
 private void cargarCatalogoCliente() {
-    jPanel2.removeAll(); // Limpia el panel antes de actualizar
+    jPanel2.removeAll();
+    jPanel2.setLayout(new javax.swing.BoxLayout(jPanel2, javax.swing.BoxLayout.Y_AXIS));
 
     java.io.File archivo = new java.io.File("baseDeDatos/coches.csv");
 
@@ -35,28 +36,42 @@ private void cargarCatalogoCliente() {
 
     try (var br = new java.io.BufferedReader(new java.io.FileReader(archivo))) {
         String linea;
-        boolean primeraLinea = true; // Para saltar los encabezados
-        int y = 10;
-
+        boolean primeraLinea = true;
         while ((linea = br.readLine()) != null) {
             if (primeraLinea) { 
                 primeraLinea = false; 
                 continue; 
             }
 
-            String[] datos = linea.split(",");
+            String[] datos = linea.split("[,;]");
 
-            if (datos.length == 5) {
+
+            if (datos.length >= 6) {
                 javax.swing.JPanel item = new javax.swing.JPanel();
-                item.setLayout(new javax.swing.BoxLayout(item, javax.swing.BoxLayout.Y_AXIS));
+                item.setLayout(new java.awt.BorderLayout());
                 item.setBorder(javax.swing.BorderFactory.createTitledBorder(datos[0] + " - " + datos[1]));
 
-                item.add(new javax.swing.JLabel("Año: " + datos[2]));
-                item.add(new javax.swing.JLabel("Precio: " + datos[3]));
-                item.add(new javax.swing.JLabel("Descripción: " + datos[4]));
+                javax.swing.JPanel info = new javax.swing.JPanel();
+                info.setLayout(new javax.swing.BoxLayout(info, javax.swing.BoxLayout.Y_AXIS));
+                info.add(new javax.swing.JLabel("Año: " + datos[2]));
+                info.add(new javax.swing.JLabel("Precio: " + datos[3]));
+                info.add(new javax.swing.JLabel("Descripción: " + datos[4]));
 
-                item.setBounds(10, y, 400, 90);
-                y += 100;
+                javax.swing.JLabel imagenLabel = new javax.swing.JLabel();
+                java.io.File imagenFile = new java.io.File(datos[5]);
+                if (imagenFile.exists()) {
+                    javax.swing.ImageIcon icon = new javax.swing.ImageIcon(
+                        new javax.swing.ImageIcon(datos[5])
+                            .getImage()
+                            .getScaledInstance(120, 80, java.awt.Image.SCALE_SMOOTH)
+                    );
+                    imagenLabel.setIcon(icon);
+                } else {
+                    imagenLabel.setText("Sin imagen");
+                }
+
+                item.add(imagenLabel, java.awt.BorderLayout.WEST);
+                item.add(info, java.awt.BorderLayout.CENTER);
                 jPanel2.add(item);
             }
         }
@@ -67,6 +82,7 @@ private void cargarCatalogoCliente() {
     jPanel2.revalidate();
     jPanel2.repaint();
 }
+
 
     
     
@@ -106,7 +122,7 @@ private void cargarCatalogoCliente() {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(141, Short.MAX_VALUE)
+                .addContainerGap(144, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -132,25 +148,23 @@ private void cargarCatalogoCliente() {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 225, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(358, 358, 358)
                         .addComponent(btnactualizar))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(343, 343, 343)
-                        .addComponent(jLabel1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel1))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(147, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 574, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnactualizar)
                 .addContainerGap(61, Short.MAX_VALUE))

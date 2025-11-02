@@ -10,7 +10,8 @@ package concesionarioapp;
  */
 public class gestionar_vehiculos extends javax.swing.JFrame {
     
-    
+    private String rutaImagenSeleccionada = "";
+
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(gestionar_vehiculos.class.getName());
 
@@ -21,6 +22,8 @@ public class gestionar_vehiculos extends javax.swing.JFrame {
         initComponents();
         jScrollPane1.setViewportView(jPanel2); 
         cargarCatalogo();
+        
+
         
     }
 
@@ -45,9 +48,11 @@ public class gestionar_vehiculos extends javax.swing.JFrame {
         txtprecio = new javax.swing.JTextField();
         txtdescripcion = new javax.swing.JTextField();
         btnguardarvehiculo = new javax.swing.JButton();
-        btnactualizarcatalogo = new javax.swing.JButton();
+        btnimagen = new javax.swing.JButton();
+        lblvista = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
+        btnactualizarcatalogo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -70,6 +75,16 @@ public class gestionar_vehiculos extends javax.swing.JFrame {
             }
         });
 
+        btnimagen.setText("Seleccionar imagen");
+        btnimagen.setBorder(null);
+        btnimagen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnimagenActionPerformed(evt);
+            }
+        });
+
+        lblvista.setBorder(new javax.swing.border.MatteBorder(null));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -82,53 +97,58 @@ public class gestionar_vehiculos extends javax.swing.JFrame {
                     .addComponent(lblmodelo1)
                     .addComponent(lblmarca)
                     .addComponent(lbldescripcion))
-                .addGap(69, 69, 69)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtmodelo, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtmarca, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtaño, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtprecio, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtdescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(44, Short.MAX_VALUE))
+                    .addComponent(txtdescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtaño, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtmodelo, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtmarca, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(68, 68, 68))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(btnimagen, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblvista, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(86, 86, 86)
                 .addComponent(btnguardarvehiculo)
-                .addGap(95, 95, 95))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblmarca)
                     .addComponent(txtmarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtmodelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblmodelo1))
-                .addGap(27, 27, 27)
+                    .addComponent(lblmodelo1)
+                    .addComponent(txtmodelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtaño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblaño))
-                .addGap(28, 28, 28)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtprecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblprecio))
-                .addGap(27, 27, 27)
+                    .addComponent(lblaño)
+                    .addComponent(txtaño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblprecio)
+                    .addComponent(txtprecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbldescripcion)
                     .addComponent(txtdescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addGap(21, 21, 21)
+                .addComponent(btnimagen)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblvista, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnguardarvehiculo)
-                .addGap(33, 33, 33))
+                .addGap(25, 25, 25))
         );
-
-        btnactualizarcatalogo.setText("Actualizar Catálogo");
-        btnactualizarcatalogo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnactualizarcatalogoActionPerformed(evt);
-            }
-        });
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Catalogo Vehículos"));
 
@@ -145,31 +165,38 @@ public class gestionar_vehiculos extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(jPanel2);
 
+        btnactualizarcatalogo.setText("Actualizar Catálogo");
+        btnactualizarcatalogo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnactualizarcatalogoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnactualizarcatalogo)
-                .addGap(511, 511, 511))
             .addGroup(layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 68, 68)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 806, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(177, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 808, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(175, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnactualizarcatalogo)
+                .addGap(499, 499, 499))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(43, 43, 43)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addComponent(btnactualizarcatalogo)
-                .addContainerGap(586, Short.MAX_VALUE))
+                .addGap(514, 514, 514))
         );
 
         pack();
@@ -225,7 +252,7 @@ public class gestionar_vehiculos extends javax.swing.JFrame {
     
     private void btnguardarvehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarvehiculoActionPerformed
         // TODO add your handling code here:
-       String marca = txtmarca.getText().trim();
+    String marca = txtmarca.getText().trim();
     String modelo = txtmodelo.getText().trim();
     String año = txtaño.getText().trim();
     String precio = txtprecio.getText().trim();
@@ -248,7 +275,7 @@ public class gestionar_vehiculos extends javax.swing.JFrame {
             bw.newLine();
         }
 
-        bw.write(marca + "," + modelo + "," + año + "," + precio + "," + descripcion);
+        bw.write(marca + "," + modelo + "," + año + "," + precio + "," + descripcion + "," + rutaImagenSeleccionada);
         bw.newLine();
         bw.close();
         fw.close();
@@ -272,34 +299,57 @@ public class gestionar_vehiculos extends javax.swing.JFrame {
     private void btnactualizarcatalogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnactualizarcatalogoActionPerformed
         // TODO add your handling code here:
         
-         cargarCatalogo();
         jPanel2.removeAll(); // Limpia los paneles anteriores
 
-    java.io.File archivo = new java.io.File("baseDeDatos/coches.csv");
-    if (!archivo.exists()) {
-        javax.swing.JOptionPane.showMessageDialog(this, "No hay vehículos guardados todavía.");
-        return;
+         java.io.File archivo = new java.io.File("baseDeDatos/coches.csv");
+          if (!archivo.exists()) {
+              javax.swing.JOptionPane.showMessageDialog(this, "No hay vehículos guardados todavía.");
+                  return;
     }
 
     try (var br = new java.io.BufferedReader(new java.io.FileReader(archivo))) {
         String linea;
-        int y = 10; // posición vertical inicial
+        int y = 10;
+
+        // Saltar la cabecera
+        br.readLine();
 
         while ((linea = br.readLine()) != null) {
             String[] datos = linea.split(",");
 
-            if (datos.length == 5) {
+            // Ahora hay 6 columnas (Marca, Modelo, Año, Precio, Descripción, Imagen)
+            if (datos.length >= 6) {
                 javax.swing.JPanel item = new javax.swing.JPanel();
-                item.setLayout(new javax.swing.BoxLayout(item, javax.swing.BoxLayout.Y_AXIS));
+                item.setLayout(null);
                 item.setBorder(javax.swing.BorderFactory.createTitledBorder(datos[0] + " - " + datos[1]));
+                item.setBounds(10, y, 500, 120);
 
-                item.add(new javax.swing.JLabel("Año: " + datos[2]));
-                item.add(new javax.swing.JLabel("Precio: " + datos[3]));
-                item.add(new javax.swing.JLabel("Descripción: " + datos[4]));
+                // Texto
+                javax.swing.JLabel lblAnio = new javax.swing.JLabel("Año: " + datos[2]);
+                lblAnio.setBounds(140, 20, 200, 20);
+                item.add(lblAnio);
 
-                item.setBounds(10, y, 400, 90);
-                y += 100;
+                javax.swing.JLabel lblPrecio = new javax.swing.JLabel("Precio: " + datos[3]);
+                lblPrecio.setBounds(140, 40, 200, 20);
+                item.add(lblPrecio);
+
+                javax.swing.JLabel lblDescripcion = new javax.swing.JLabel("<html>Descripción: " + datos[4] + "</html>");
+                lblDescripcion.setBounds(140, 60, 300, 40);
+                item.add(lblDescripcion);
+
+                // Imagen
+                String rutaImagen = datos[5];
+                if (!rutaImagen.isEmpty()) {
+                    javax.swing.ImageIcon icono = new javax.swing.ImageIcon(
+                        new javax.swing.ImageIcon(rutaImagen).getImage().getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH)
+                    );
+                    javax.swing.JLabel lblImagen = new javax.swing.JLabel(icono);
+                    lblImagen.setBounds(10, 20, 100, 80);
+                    item.add(lblImagen);
+                }
+
                 jPanel2.add(item);
+                y += 130;
             }
         }
 
@@ -311,6 +361,53 @@ public class gestionar_vehiculos extends javax.swing.JFrame {
     jPanel2.repaint();
 
     }//GEN-LAST:event_btnactualizarcatalogoActionPerformed
+
+    private void btnimagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnimagenActionPerformed
+        // TODO add your handling code here:
+        
+        javax.swing.JFileChooser chooser = new javax.swing.JFileChooser();
+    chooser.setFileSelectionMode(javax.swing.JFileChooser.FILES_ONLY);
+    chooser.setDialogTitle("Seleccionar imagen del vehículo");
+
+    // Filtro solo para imágenes
+    chooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("Imágenes", "jpg", "jpeg", "png"));
+
+    int resultado = chooser.showOpenDialog(this);
+    if (resultado == javax.swing.JFileChooser.APPROVE_OPTION) {
+        java.io.File archivoSeleccionado = chooser.getSelectedFile();
+
+        // Carpeta destino
+        java.io.File carpetaImagenes = new java.io.File("imagenes");
+        if (!carpetaImagenes.exists()) {
+            carpetaImagenes.mkdirs();
+        }
+
+        // Copiar la imagen al proyecto
+        String nombreArchivo = archivoSeleccionado.getName();
+        java.io.File destino = new java.io.File(carpetaImagenes, nombreArchivo);
+
+        try {
+            java.nio.file.Files.copy(
+                archivoSeleccionado.toPath(),
+                destino.toPath(),
+                java.nio.file.StandardCopyOption.REPLACE_EXISTING
+            );
+            rutaImagenSeleccionada = "imagenes/" + nombreArchivo;
+
+            // Mostrar vista previa
+            javax.swing.ImageIcon icon = new javax.swing.ImageIcon(
+                new javax.swing.ImageIcon(rutaImagenSeleccionada)
+                    .getImage()
+                    .getScaledInstance(120, 80, java.awt.Image.SCALE_SMOOTH)
+            );
+            lblvista.setIcon(icon);
+        } catch (Exception e) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Error al copiar la imagen: " + e.getMessage());
+        }
+    }
+        
+        
+    }//GEN-LAST:event_btnimagenActionPerformed
 
     /**
      * @param args the command line arguments
@@ -340,6 +437,7 @@ public class gestionar_vehiculos extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnactualizarcatalogo;
     private javax.swing.JButton btnguardarvehiculo;
+    private javax.swing.JButton btnimagen;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -348,6 +446,7 @@ public class gestionar_vehiculos extends javax.swing.JFrame {
     private javax.swing.JLabel lblmarca;
     private javax.swing.JLabel lblmodelo1;
     private javax.swing.JLabel lblprecio;
+    private javax.swing.JLabel lblvista;
     private javax.swing.JTextField txtaño;
     private javax.swing.JTextField txtdescripcion;
     private javax.swing.JTextField txtmarca;
