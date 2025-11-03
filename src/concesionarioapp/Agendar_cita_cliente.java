@@ -278,8 +278,8 @@ public class Agendar_cita_cliente extends javax.swing.JFrame {
             // Limpiar los campos después de guardar
             txtNombre.setText("");
             txtID.setText("");
-            txtFecha.setText("");
-            txtHora.setText("");
+            txtFecha.setText("DD/MM/AAAA");
+            txtHora.setText("HH:MM");
             cboPeriodo.setSelectedIndex(0);
             cboMotivo.setSelectedIndex(0);
 
@@ -305,8 +305,8 @@ public class Agendar_cita_cliente extends javax.swing.JFrame {
         // Limpiar los campos después de guardar
             txtNombre.setText("");
             txtID.setText("");
-            txtFecha.setText("");
-            txtHora.setText("");
+            txtFecha.setText("DD/MM/AAAA");
+            txtHora.setText("HH:MM");
             cboPeriodo.setSelectedIndex(0);
             cboMotivo.setSelectedIndex(0);
     }//GEN-LAST:event_btnLimpiarActionPerformed
