@@ -10,7 +10,9 @@ package concesionarioapp;
  */
 public class gestionar_vehiculos extends javax.swing.JFrame {
     
+    
     private String rutaImagenSeleccionada = "";
+    
 
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(gestionar_vehiculos.class.getName());
@@ -23,7 +25,12 @@ public class gestionar_vehiculos extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jPanel2); 
         cargarCatalogo();
         
-
+        if (cboFiltro.getSelectedItem() != null && 
+            cboFiltro.getSelectedItem().toString().equalsIgnoreCase("Todo")) {
+            txtFiltro.setVisible(false);
+        } else {
+            txtFiltro.setVisible(true);
+        }
         
     }
 
@@ -53,6 +60,11 @@ public class gestionar_vehiculos extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
         btnactualizarcatalogo = new javax.swing.JButton();
+        btnRetroceder = new javax.swing.JButton();
+        lblFiltro = new javax.swing.JLabel();
+        cboFiltro = new javax.swing.JComboBox<>();
+        txtFiltro = new javax.swing.JTextField();
+        btnFiltrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -172,6 +184,29 @@ public class gestionar_vehiculos extends javax.swing.JFrame {
             }
         });
 
+        btnRetroceder.setText("Retroceder");
+        btnRetroceder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRetrocederActionPerformed(evt);
+            }
+        });
+
+        lblFiltro.setText("Filtro");
+
+        cboFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todo", "Marca", "Modelo", "Año", "Precio" }));
+        cboFiltro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboFiltroActionPerformed(evt);
+            }
+        });
+
+        btnFiltrar.setText("Filtrar");
+        btnFiltrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFiltrarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -181,7 +216,15 @@ public class gestionar_vehiculos extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 808, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(175, Short.MAX_VALUE))
+                .addGap(39, 39, 39)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnRetroceder)
+                    .addComponent(lblFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(txtFiltro, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(cboFiltro, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnFiltrar))
+                .addContainerGap(48, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnactualizarcatalogo)
@@ -190,10 +233,23 @@ public class gestionar_vehiculos extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(btnRetroceder)
+                        .addGap(90, 90, 90)
+                        .addComponent(lblFiltro)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cboFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnFiltrar)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addComponent(btnactualizarcatalogo)
                 .addGap(514, 514, 514))
@@ -409,6 +465,138 @@ public class gestionar_vehiculos extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnimagenActionPerformed
 
+    private void btnRetrocederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetrocederActionPerformed
+        // TODO add your handling code here:
+        new interfaz_administrador().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnRetrocederActionPerformed
+
+    private void cboFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboFiltroActionPerformed
+        // TODO add your handling code here:
+        String seleccion = "";
+    if (cboFiltro.getSelectedItem() != null) {
+        seleccion = cboFiltro.getSelectedItem().toString().trim();
+    }
+
+    if (seleccion.equalsIgnoreCase("Todo")) {
+        txtFiltro.setVisible(false);
+        txtFiltro.setText("");
+    } else {
+        txtFiltro.setVisible(true);
+        txtFiltro.setText("");
+        txtFiltro.requestFocusInWindow();
+    }
+
+    // Forzamos actualización del layout por si el GroupLayout no refresca solo
+    if (txtFiltro.getParent() != null) {
+        txtFiltro.getParent().revalidate();
+        txtFiltro.getParent().repaint();
+    }
+    }//GEN-LAST:event_cboFiltroActionPerformed
+
+    private void btnFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrarActionPerformed
+        // Aseguramos que el textbox esté visible si el filtro no es "Todo".
+    String filtro = (cboFiltro.getSelectedItem() != null)
+                    ? cboFiltro.getSelectedItem().toString().trim()
+                    : "Todo";
+
+    if (!filtro.equalsIgnoreCase("Todo")) {
+        txtFiltro.setVisible(true);
+        // forzamos refresco para que el campo aparezca inmediatamente
+        if (txtFiltro.getParent() != null) {
+            txtFiltro.getParent().revalidate();
+            txtFiltro.getParent().repaint();
+        }
+        // opcional: damos foco para que el usuario escriba
+        txtFiltro.requestFocusInWindow();
+    } else {
+        // Si es "Todo", ocultamos y limpiamos
+        txtFiltro.setVisible(false);
+        txtFiltro.setText("");
+    }
+
+    // Ahora sí leemos el valor (si está oculto, será empty y se mostrarán todos)
+    String valorFiltro = txtFiltro.getText().trim().toLowerCase();
+
+    jPanel2.removeAll(); // limpia el catálogo actual
+
+    java.io.File archivo = new java.io.File("baseDeDatos/coches.csv");
+    if (!archivo.exists()) {
+        javax.swing.JOptionPane.showMessageDialog(this, "No hay vehículos guardados todavía.");
+        return;
+    }
+
+    try (var br = new java.io.BufferedReader(new java.io.FileReader(archivo))) {
+        String linea;
+        int y = 10;
+
+        // Saltar la cabecera
+        br.readLine();
+
+        while ((linea = br.readLine()) != null) {
+            String[] datos = linea.split(",");
+
+            // Estructura esperada: Marca,Modelo,Año,Precio,Descripción,Imagen
+            if (datos.length >= 6) {
+                String marca = datos[0].toLowerCase();
+                String modelo = datos[1].toLowerCase();
+                String anio = datos[2].toLowerCase();
+                String precio = datos[3].toLowerCase();
+
+                boolean coincide = false;
+
+                coincide = switch (filtro.toLowerCase()) {
+                    case "todo" -> true;
+                    case "marca" -> marca.contains(valorFiltro);
+                    case "modelo" -> modelo.contains(valorFiltro);
+                    case "año", "anio" -> anio.contains(valorFiltro);
+                    case "precio" -> precio.contains(valorFiltro);
+                    default -> true;
+                }; // por si el combo o CSV usan 'anio' sin tilde
+
+                if (coincide) {
+                    javax.swing.JPanel item = new javax.swing.JPanel();
+                    item.setLayout(null);
+                    item.setBorder(javax.swing.BorderFactory.createTitledBorder(datos[0] + " - " + datos[1]));
+                    item.setBounds(10, y, 500, 120);
+
+                    javax.swing.JLabel lblAnio = new javax.swing.JLabel("Año: " + datos[2]);
+                    lblAnio.setBounds(140, 20, 200, 20);
+                    item.add(lblAnio);
+
+                    javax.swing.JLabel lblPrecio = new javax.swing.JLabel("Precio: " + datos[3]);
+                    lblPrecio.setBounds(140, 40, 200, 20);
+                    item.add(lblPrecio);
+
+                    javax.swing.JLabel lblDescripcion = new javax.swing.JLabel("<html>Descripción: " + datos[4] + "</html>");
+                    lblDescripcion.setBounds(140, 60, 300, 40);
+                    item.add(lblDescripcion);
+
+                    // Imagen
+                    String rutaImagen = datos[5];
+                    if (!rutaImagen.isEmpty()) {
+                        javax.swing.ImageIcon icono = new javax.swing.ImageIcon(
+                            new javax.swing.ImageIcon(rutaImagen).getImage().getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH)
+                        );
+                        javax.swing.JLabel lblImagen = new javax.swing.JLabel(icono);
+                        lblImagen.setBounds(10, 20, 100, 80);
+                        item.add(lblImagen);
+                    }
+
+                    jPanel2.add(item);
+                    y += 130;
+                }
+            }
+        }
+
+    } catch (Exception e) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Error al filtrar vehículos: " + e.getMessage());
+    }
+
+    jPanel2.revalidate();
+    jPanel2.repaint();
+    }//GEN-LAST:event_btnFiltrarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -435,18 +623,23 @@ public class gestionar_vehiculos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnFiltrar;
+    private javax.swing.JButton btnRetroceder;
     private javax.swing.JButton btnactualizarcatalogo;
     private javax.swing.JButton btnguardarvehiculo;
     private javax.swing.JButton btnimagen;
+    private javax.swing.JComboBox<String> cboFiltro;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblFiltro;
     private javax.swing.JLabel lblaño;
     private javax.swing.JLabel lbldescripcion;
     private javax.swing.JLabel lblmarca;
     private javax.swing.JLabel lblmodelo1;
     private javax.swing.JLabel lblprecio;
     private javax.swing.JLabel lblvista;
+    private javax.swing.JTextField txtFiltro;
     private javax.swing.JTextField txtaño;
     private javax.swing.JTextField txtdescripcion;
     private javax.swing.JTextField txtmarca;

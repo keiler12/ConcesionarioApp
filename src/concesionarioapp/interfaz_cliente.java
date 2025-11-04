@@ -29,6 +29,7 @@ public class interfaz_cliente extends javax.swing.JFrame {
     private void initComponents() {
 
         btnAgendarCita = new javax.swing.JButton();
+        btnRetroceder = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -36,6 +37,13 @@ public class interfaz_cliente extends javax.swing.JFrame {
         btnAgendarCita.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgendarCitaActionPerformed(evt);
+            }
+        });
+
+        btnRetroceder.setText("Retroceder");
+        btnRetroceder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRetrocederActionPerformed(evt);
             }
         });
 
@@ -47,11 +55,17 @@ public class interfaz_cliente extends javax.swing.JFrame {
                 .addGap(149, 149, 149)
                 .addComponent(btnAgendarCita)
                 .addContainerGap(153, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnRetroceder)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(124, 124, 124)
+                .addContainerGap()
+                .addComponent(btnRetroceder)
+                .addGap(95, 95, 95)
                 .addComponent(btnAgendarCita)
                 .addContainerGap(153, Short.MAX_VALUE))
         );
@@ -65,6 +79,12 @@ public class interfaz_cliente extends javax.swing.JFrame {
         new Agendar_cita_cliente().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnAgendarCitaActionPerformed
+
+    private void btnRetrocederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetrocederActionPerformed
+        // TODO add your handling code here:
+        new InicioApp().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnRetrocederActionPerformed
 
     /**
      * @param args the command line arguments
@@ -93,5 +113,6 @@ public class interfaz_cliente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgendarCita;
+    private javax.swing.JButton btnRetroceder;
     // End of variables declaration//GEN-END:variables
 }

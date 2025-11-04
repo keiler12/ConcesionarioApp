@@ -153,6 +153,10 @@ public class gestionar_usuarios extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        btnRetroceder = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        cboFiltro = new javax.swing.JComboBox<>();
+        btnFiltrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -192,6 +196,24 @@ public class gestionar_usuarios extends javax.swing.JFrame {
 
         jScrollPane2.setViewportView(jScrollPane1);
 
+        btnRetroceder.setText("Retroceder");
+        btnRetroceder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRetrocederActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Filtro");
+
+        cboFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Administrador", "Cliente" }));
+
+        btnFiltrar.setText("Filtrar");
+        btnFiltrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFiltrarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -199,26 +221,44 @@ public class gestionar_usuarios extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(68, 68, 68)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnactualizarusuario)
-                    .addComponent(btneditarusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btneliminarusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(38, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnRetroceder)
+                        .addGap(24, 24, 24))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnactualizarusuario)
+                            .addComponent(btneditarusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btneliminarusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cboFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnFiltrar))
+                        .addContainerGap(26, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
+                        .addGap(23, 23, 23)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 489, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(btnRetroceder)
+                        .addGap(18, 18, 18)
                         .addComponent(btnactualizarusuario)
                         .addGap(67, 67, 67)
                         .addComponent(btneditarusuario)
                         .addGap(57, 57, 57)
-                        .addComponent(btneliminarusuario))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 489, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btneliminarusuario)
+                        .addGap(73, 73, 73)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cboFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnFiltrar)))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
@@ -242,6 +282,58 @@ public class gestionar_usuarios extends javax.swing.JFrame {
         editarUsuario();
         
     }//GEN-LAST:event_btneditarusuarioActionPerformed
+
+    private void btnRetrocederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetrocederActionPerformed
+        // TODO add your handling code here:
+        new interfaz_administrador().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnRetrocederActionPerformed
+
+    private void btnFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrarActionPerformed
+        // TODO add your handling code here:
+        String filtroSeleccionado = "Todos";
+        if (cboFiltro.getSelectedItem() != null) {
+            filtroSeleccionado = cboFiltro.getSelectedItem().toString().trim();
+        }
+
+        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+        modelo.setRowCount(0); // limpia la tabla antes de aplicar filtro
+
+        try (BufferedReader br = new BufferedReader(new FileReader(RUTA_CSV))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                // Si la línea está vacía la saltamos
+                if (linea.trim().isEmpty()) continue;
+
+                String[] datos = linea.split(",");
+                if (datos.length >= 3) {
+                String tipo = datos[2].trim();
+
+                    // Normalizamos para comparar (acepta "Usuario"/"Usuarios", mayúsc/minúsc)
+                    String filtroLower = filtroSeleccionado.toLowerCase();
+                    String tipoLower = tipo.toLowerCase();
+
+                    boolean coincidir = false;
+                    if (filtroLower.contains("todo")) {
+                        coincidir = true;
+                    } else if (filtroLower.contains("client") && tipoLower.startsWith("client")) {
+                        coincidir = true;
+                    } else if (filtroLower.contains("admin") && tipoLower.startsWith("admin")) {
+                        coincidir = true;
+                    }
+
+                    if (coincidir) {
+                    // Agregamos fila asegurando que el número de columnas coincida con la tabla
+                    // En tu caso la tabla tiene 3 columnas: usuario, contraseña, tipo
+                        Object[] fila = new Object[] { datos[0], datos[1], datos[2] };
+                        modelo.addRow(fila);
+                }
+            }
+        }
+    } catch (IOException e) {
+        JOptionPane.showMessageDialog(this, "Error al filtrar usuarios: " + e.getMessage());
+    }
+    }//GEN-LAST:event_btnFiltrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -269,9 +361,13 @@ public class gestionar_usuarios extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnFiltrar;
+    private javax.swing.JButton btnRetroceder;
     private javax.swing.JButton btnactualizarusuario;
     private javax.swing.JButton btneditarusuario;
     private javax.swing.JButton btneliminarusuario;
+    private javax.swing.JComboBox<String> cboFiltro;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
