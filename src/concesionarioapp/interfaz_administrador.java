@@ -32,7 +32,7 @@ public class interfaz_administrador extends javax.swing.JFrame {
         btngestionusuarios = new javax.swing.JButton();
         btngestionusuarios1 = new javax.swing.JButton();
         btngestionusuarios2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btngestionarcitas = new javax.swing.JButton();
         btnCerrarSesion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -50,7 +50,12 @@ public class interfaz_administrador extends javax.swing.JFrame {
 
         btngestionusuarios2.setText("Gestionar vehiculos");
 
-        jButton1.setText("Gestionar Citas");
+        btngestionarcitas.setText("Gestionar Citas");
+        btngestionarcitas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btngestionarcitasActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -62,7 +67,7 @@ public class interfaz_administrador extends javax.swing.JFrame {
                     .addComponent(btngestionusuarios1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btngestionusuarios2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btngestionusuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btngestionarcitas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(183, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -75,7 +80,7 @@ public class interfaz_administrador extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addComponent(btngestionusuarios)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(btngestionarcitas)
                 .addGap(37, 37, 37))
         );
 
@@ -128,6 +133,11 @@ public class interfaz_administrador extends javax.swing.JFrame {
        this.dispose(); 
     }//GEN-LAST:event_btngestionusuarios1ActionPerformed
 
+    private void btngestionarcitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btngestionarcitasActionPerformed
+        // TODO add your handling code here:
+     
+    }//GEN-LAST:event_btngestionarcitasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -155,10 +165,10 @@ public class interfaz_administrador extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrarSesion;
+    private javax.swing.JButton btngestionarcitas;
     private javax.swing.JButton btngestionusuarios;
     private javax.swing.JButton btngestionusuarios1;
     private javax.swing.JButton btngestionusuarios2;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 }

@@ -69,7 +69,7 @@
                       <Component id="btngestionusuarios1" max="32767" attributes="0"/>
                       <Component id="btngestionusuarios2" alignment="1" max="32767" attributes="0"/>
                       <Component id="btngestionusuarios" alignment="1" max="32767" attributes="0"/>
-                      <Component id="jButton1" alignment="1" max="32767" attributes="0"/>
+                      <Component id="btngestionarcitas" alignment="1" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace pref="183" max="32767" attributes="0"/>
               </Group>
@@ -85,7 +85,7 @@
                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                   <Component id="btngestionusuarios" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="39" max="32767" attributes="0"/>
-                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                  <Component id="btngestionarcitas" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -110,10 +110,13 @@
             <Property name="text" type="java.lang.String" value="Gestionar vehiculos"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="btngestionarcitas">
           <Properties>
             <Property name="text" type="java.lang.String" value="Gestionar Citas"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btngestionarcitasActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

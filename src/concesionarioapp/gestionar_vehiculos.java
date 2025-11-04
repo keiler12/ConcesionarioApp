@@ -288,7 +288,7 @@ public class gestionar_vehiculos extends javax.swing.JFrame {
 
         javax.swing.JOptionPane.showMessageDialog(this, "Vehículo añadido y guardado correctamente.");
 
-        // 🔹 Cargar automáticamente el nuevo catálogo
+        // Cargar automáticamente el nuevo catálogo
         cargarCatalogo();
 
     } catch (Exception e) {
@@ -317,7 +317,7 @@ public class gestionar_vehiculos extends javax.swing.JFrame {
         while ((linea = br.readLine()) != null) {
             String[] datos = linea.split(",");
 
-            // Ahora hay 6 columnas (Marca, Modelo, Año, Precio, Descripción, Imagen)
+            //6 columnas (Marca, Modelo, Año, Precio, Descripción, Imagen)
             if (datos.length >= 6) {
                 javax.swing.JPanel item = new javax.swing.JPanel();
                 item.setLayout(null);
