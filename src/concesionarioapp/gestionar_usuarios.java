@@ -157,30 +157,43 @@ public class gestionar_usuarios extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         cboFiltro = new javax.swing.JComboBox<>();
         btnFiltrar = new javax.swing.JButton();
+        lbllogo = new javax.swing.JLabel();
+        lblfonfo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnactualizarusuario.setBackground(new java.awt.Color(51, 153, 255));
+        btnactualizarusuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/actualizar.png"))); // NOI18N
         btnactualizarusuario.setText("Actualizar usuario");
         btnactualizarusuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnactualizarusuarioActionPerformed(evt);
             }
         });
+        getContentPane().add(btnactualizarusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 170, -1, -1));
 
+        btneliminarusuario.setBackground(new java.awt.Color(255, 153, 153));
+        btneliminarusuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/cancelar.png"))); // NOI18N
         btneliminarusuario.setText("Eliminar usuario");
         btneliminarusuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btneliminarusuarioActionPerformed(evt);
             }
         });
+        getContentPane().add(btneliminarusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 300, 170, -1));
 
+        btneditarusuario.setBackground(new java.awt.Color(255, 255, 204));
+        btneditarusuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/editar.png"))); // NOI18N
         btneditarusuario.setText("Editar usuario");
         btneditarusuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btneditarusuarioActionPerformed(evt);
             }
         });
+        getContentPane().add(btneditarusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 230, 170, -1));
 
+        jTable1.setBackground(new java.awt.Color(153, 204, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -196,71 +209,41 @@ public class gestionar_usuarios extends javax.swing.JFrame {
 
         jScrollPane2.setViewportView(jScrollPane1);
 
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(68, 142, 530, 450));
+
+        btnRetroceder.setBackground(new java.awt.Color(153, 204, 255));
+        btnRetroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/retroceder.png"))); // NOI18N
         btnRetroceder.setText("Retroceder");
         btnRetroceder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRetrocederActionPerformed(evt);
             }
         });
+        getContentPane().add(btnRetroceder, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 10, -1, -1));
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Filtro");
+        jLabel1.setBorder(new javax.swing.border.MatteBorder(null));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 380, 80, -1));
 
+        cboFiltro.setBackground(new java.awt.Color(51, 153, 255));
         cboFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Administrador", "Cliente" }));
+        getContentPane().add(cboFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 420, 140, -1));
 
+        btnFiltrar.setBackground(new java.awt.Color(204, 255, 204));
         btnFiltrar.setText("Filtrar");
         btnFiltrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFiltrarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnFiltrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 480, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(68, 68, 68)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnRetroceder)
-                        .addGap(24, 24, 24))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnactualizarusuario)
-                            .addComponent(btneditarusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btneliminarusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cboFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnFiltrar))
-                        .addContainerGap(26, Short.MAX_VALUE))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 489, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(btnRetroceder)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnactualizarusuario)
-                        .addGap(67, 67, 67)
-                        .addComponent(btneditarusuario)
-                        .addGap(57, 57, 57)
-                        .addComponent(btneliminarusuario)
-                        .addGap(73, 73, 73)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cboFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnFiltrar)))
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
+        lbllogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/fondo1.png"))); // NOI18N
+        getContentPane().add(lbllogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 20, 100, 60));
+
+        lblfonfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/imagen_fondo.png"))); // NOI18N
+        getContentPane().add(lblfonfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 2, 960, 640));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -371,5 +354,7 @@ public class gestionar_usuarios extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblfonfo;
+    private javax.swing.JLabel lbllogo;
     // End of variables declaration//GEN-END:variables
 }

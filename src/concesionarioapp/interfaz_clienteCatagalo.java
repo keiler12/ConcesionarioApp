@@ -1,3 +1,5 @@
+package concesionarioapp;
+
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -143,8 +145,14 @@ private void cargarCatalogoCliente() {
         btnactualizar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnagendarcita = new javax.swing.JButton();
+        btncerrarsesion = new javax.swing.JButton();
+        lbllogo = new javax.swing.JLabel();
+        lblfondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -159,64 +167,39 @@ private void cargarCatalogoCliente() {
 
         jScrollPane1.setViewportView(jPanel2);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(138, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 503, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 3, 600, 430));
 
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 181, 600, 430));
+
+        btnactualizar.setBackground(new java.awt.Color(102, 204, 255));
+        btnactualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/actualizar.png"))); // NOI18N
         btnactualizar.setText("Actualizar catalogo");
         btnactualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnactualizarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnactualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 630, -1, -1));
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Catálogo de Vehículos - Cliente ");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 140, -1, -1));
 
+        btnagendarcita.setBackground(new java.awt.Color(255, 255, 204));
+        btnagendarcita.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/citas.png"))); // NOI18N
         btnagendarcita.setText("Agendar citas");
+        getContentPane().add(btnagendarcita, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 700, 159, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(247, 247, 247)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(259, 259, 259)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnagendarcita, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnactualizar))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(76, 76, 76)
-                .addComponent(btnactualizar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                .addComponent(btnagendarcita)
-                .addGap(53, 53, 53))
-        );
+        btncerrarsesion.setBackground(new java.awt.Color(255, 51, 51));
+        btncerrarsesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/cerrar_sesion.png"))); // NOI18N
+        btncerrarsesion.setText("Cerrar sesión");
+        getContentPane().add(btncerrarsesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 20, -1, -1));
+
+        lbllogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/fondo1.png"))); // NOI18N
+        getContentPane().add(lbllogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 30, 100, 70));
+
+        lblfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/imagen_fondo.png"))); // NOI18N
+        getContentPane().add(lblfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 780));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -254,9 +237,12 @@ private void cargarCatalogoCliente() {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnactualizar;
     private javax.swing.JButton btnagendarcita;
+    private javax.swing.JButton btncerrarsesion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblfondo;
+    private javax.swing.JLabel lbllogo;
     // End of variables declaration//GEN-END:variables
 }

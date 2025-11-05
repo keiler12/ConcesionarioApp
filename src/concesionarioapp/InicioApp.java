@@ -19,8 +19,11 @@ public class InicioApp extends javax.swing.JFrame {
         initComponents();
        lblfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/fondo.png")));
 
-
     }
+    
+
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

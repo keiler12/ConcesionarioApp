@@ -29,18 +29,21 @@ public class interfaz_administrador extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        btngestionusuarios = new javax.swing.JButton();
         btngestionusuarios1 = new javax.swing.JButton();
         btngestionusuarios2 = new javax.swing.JButton();
         btngestionarcitas = new javax.swing.JButton();
         btnCerrarSesion = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        lblfondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel2.setBackground(java.awt.SystemColor.activeCaption);
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Panel de control - Administrador"));
 
-        btngestionusuarios.setText("Gestionar propetarios");
-
+        btngestionusuarios1.setBackground(new java.awt.Color(51, 153, 255));
+        btngestionusuarios1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/usuarios.png"))); // NOI18N
         btngestionusuarios1.setText("Gestionar usuarios");
         btngestionusuarios1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -48,8 +51,12 @@ public class interfaz_administrador extends javax.swing.JFrame {
             }
         });
 
+        btngestionusuarios2.setBackground(new java.awt.Color(255, 204, 204));
+        btngestionusuarios2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/vehiculos.png"))); // NOI18N
         btngestionusuarios2.setText("Gestionar vehiculos");
 
+        btngestionarcitas.setBackground(new java.awt.Color(204, 204, 204));
+        btngestionarcitas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/citas.png"))); // NOI18N
         btngestionarcitas.setText("Gestionar Citas");
         btngestionarcitas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -66,7 +73,6 @@ public class interfaz_administrador extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(btngestionusuarios1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btngestionusuarios2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btngestionusuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btngestionarcitas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(183, Short.MAX_VALUE))
         );
@@ -75,45 +81,30 @@ public class interfaz_administrador extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(btngestionusuarios1)
-                .addGap(32, 32, 32)
+                .addGap(63, 63, 63)
                 .addComponent(btngestionusuarios2)
-                .addGap(34, 34, 34)
-                .addComponent(btngestionusuarios)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
                 .addComponent(btngestionarcitas)
                 .addGap(37, 37, 37))
         );
 
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 80, -1, 320));
+
+        btnCerrarSesion.setBackground(new java.awt.Color(255, 51, 51));
+        btnCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/cerrar_sesion.png"))); // NOI18N
         btnCerrarSesion.setText("Cerrar sesión");
         btnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCerrarSesionActionPerformed(evt);
             }
         });
+        getContentPane().add(btnCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(39, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(43, 43, 43))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnCerrarSesion)
-                        .addGap(15, 15, 15))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addComponent(btnCerrarSesion)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(94, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/fondo1.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, 110, 60));
+
+        lblfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/imagen_fondo.png"))); // NOI18N
+        getContentPane().add(lblfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 1, 610, 450));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -166,9 +157,10 @@ public class interfaz_administrador extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrarSesion;
     private javax.swing.JButton btngestionarcitas;
-    private javax.swing.JButton btngestionusuarios;
     private javax.swing.JButton btngestionusuarios1;
     private javax.swing.JButton btngestionusuarios2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lblfondo;
     // End of variables declaration//GEN-END:variables
 }

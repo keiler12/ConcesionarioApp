@@ -38,8 +38,8 @@ public class Agendar_cita_cliente extends javax.swing.JFrame {
         lblID = new javax.swing.JLabel();
         lblFecha = new javax.swing.JLabel();
         lblHora = new javax.swing.JLabel();
-        lblMotivo = new javax.swing.JLabel();
         btnAgendar = new javax.swing.JButton();
+        lblMotivo = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
         txtID = new javax.swing.JTextField();
         txtFecha = new javax.swing.JTextField();
@@ -47,26 +47,43 @@ public class Agendar_cita_cliente extends javax.swing.JFrame {
         cboMotivo = new javax.swing.JComboBox<>();
         cboPeriodo = new javax.swing.JComboBox<>();
         btnLimpiar = new javax.swing.JButton();
+        lbllogo = new javax.swing.JLabel();
+        lblfondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        lblNombre.setForeground(new java.awt.Color(0, 0, 0));
         lblNombre.setText("Nombre completo");
+        getContentPane().add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 140, -1));
 
+        lblID.setForeground(new java.awt.Color(0, 0, 0));
         lblID.setText("Numero de identificación");
+        getContentPane().add(lblID, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, -1));
 
+        lblFecha.setForeground(new java.awt.Color(0, 0, 0));
         lblFecha.setText("Fecha");
+        getContentPane().add(lblFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 64, -1));
 
+        lblHora.setForeground(new java.awt.Color(0, 0, 0));
         lblHora.setText("Hora");
+        getContentPane().add(lblHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 37, -1));
 
-        lblMotivo.setText("Motido de cita");
-
+        btnAgendar.setBackground(new java.awt.Color(153, 255, 153));
+        btnAgendar.setForeground(new java.awt.Color(0, 0, 0));
         btnAgendar.setText("Agendar cita");
         btnAgendar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgendarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnAgendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 420, -1, -1));
 
+        lblMotivo.setForeground(new java.awt.Color(0, 0, 0));
+        lblMotivo.setText("Motido de cita");
+        getContentPane().add(lblMotivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 122, -1));
+
+        txtNombre.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtNombreKeyPressed(evt);
@@ -75,102 +92,56 @@ public class Agendar_cita_cliente extends javax.swing.JFrame {
                 txtNombreKeyTyped(evt);
             }
         });
+        getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, 120, -1));
 
+        txtID.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         txtID.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtIDKeyPressed(evt);
             }
         });
+        getContentPane().add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 130, 120, -1));
 
         txtFecha.setText("DD/MM/AAAA");
+        txtFecha.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         txtFecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFechaActionPerformed(evt);
             }
         });
+        getContentPane().add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 190, -1, -1));
 
         txtHora.setText("HH:MM");
+        txtHora.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        getContentPane().add(txtHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 260, 71, 30));
 
+        cboMotivo.setBackground(new java.awt.Color(51, 153, 255));
+        cboMotivo.setForeground(new java.awt.Color(0, 0, 0));
         cboMotivo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ver vehículo en venta", "Cotizar vehículo usado", "Prueba de manejo", "Negociar precio o financiación", "Documentación", "Otro", " " }));
+        cboMotivo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        getContentPane().add(cboMotivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 320, -1, -1));
 
+        cboPeriodo.setBackground(new java.awt.Color(51, 153, 255));
         cboPeriodo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AM", "PM" }));
+        cboPeriodo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        getContentPane().add(cboPeriodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, 80, 30));
 
+        btnLimpiar.setBackground(new java.awt.Color(255, 51, 51));
+        btnLimpiar.setForeground(new java.awt.Color(0, 0, 0));
         btnLimpiar.setText("limpiar");
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLimpiarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 420, 110, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(lblID)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(63, 63, 63)
-                                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblHora, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblMotivo, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(81, 81, 81)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(cboPeriodo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(cboMotivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addComponent(btnAgendar)
-                        .addGap(59, 59, 59)
-                        .addComponent(btnLimpiar)))
-                .addContainerGap(105, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNombre)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblID)
-                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblFecha)
-                    .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblHora)
-                    .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cboPeriodo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblMotivo)
-                    .addComponent(cboMotivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAgendar)
-                    .addComponent(btnLimpiar))
-                .addGap(35, 35, 35))
-        );
+        lbllogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/fondo1.png"))); // NOI18N
+        getContentPane().add(lbllogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, 110, 50));
+
+        lblfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/imagen_fondo.png"))); // NOI18N
+        lblfondo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        getContentPane().add(lblfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 580));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -346,6 +317,8 @@ public class Agendar_cita_cliente extends javax.swing.JFrame {
     private javax.swing.JLabel lblID;
     private javax.swing.JLabel lblMotivo;
     private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblfondo;
+    private javax.swing.JLabel lbllogo;
     private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtHora;
     private javax.swing.JTextField txtID;

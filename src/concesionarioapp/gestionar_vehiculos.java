@@ -99,9 +99,13 @@ public class gestionar_vehiculos extends javax.swing.JFrame {
         cboFiltro = new javax.swing.JComboBox<>();
         txtFiltro = new javax.swing.JTextField();
         btnFiltrar = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        lblfondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Registrar Vehículo"));
 
         lblmarca.setText("Marca");
@@ -243,7 +247,7 @@ public class gestionar_vehiculos extends javax.swing.JFrame {
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)))
                 .addComponent(btnimagen)
@@ -269,10 +273,12 @@ public class gestionar_vehiculos extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txtEmailProp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(73, 73, 73)
+                .addGap(18, 18, 18)
                 .addComponent(btnguardarvehiculo)
-                .addGap(70, 70, 70))
+                .addGap(29, 29, 29))
         );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 22, -1, 870));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Catalogo Vehículos"));
 
@@ -289,86 +295,56 @@ public class gestionar_vehiculos extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(jPanel2);
 
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(368, 101, 820, 500));
+
+        btnactualizarcatalogo.setBackground(new java.awt.Color(51, 153, 255));
+        btnactualizarcatalogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/actualizar.png"))); // NOI18N
         btnactualizarcatalogo.setText("Actualizar Catálogo");
         btnactualizarcatalogo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnactualizarcatalogoActionPerformed(evt);
             }
         });
+        getContentPane().add(btnactualizarcatalogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 610, -1, -1));
 
+        btnRetroceder.setBackground(new java.awt.Color(153, 204, 255));
+        btnRetroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/retroceder.png"))); // NOI18N
         btnRetroceder.setText("Retroceder");
         btnRetroceder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRetrocederActionPerformed(evt);
             }
         });
+        getContentPane().add(btnRetroceder, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 10, -1, -1));
 
+        lblFiltro.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblFiltro.setText("Filtro");
+        getContentPane().add(lblFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 660, 60, -1));
 
+        cboFiltro.setBackground(new java.awt.Color(102, 204, 255));
         cboFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todo", "Marca", "Modelo", "Año", "Precio" }));
         cboFiltro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboFiltroActionPerformed(evt);
             }
         });
+        getContentPane().add(cboFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 700, -1, -1));
+        getContentPane().add(txtFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 730, 130, -1));
 
+        btnFiltrar.setBackground(new java.awt.Color(204, 255, 255));
         btnFiltrar.setText("Filtrar");
         btnFiltrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFiltrarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnFiltrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 750, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 808, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(39, 39, 39)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnRetroceder)
-                            .addComponent(lblFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(txtFiltro, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(cboFiltro, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(btnFiltrar)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(370, 370, 370)
-                        .addComponent(btnactualizarcatalogo)))
-                .addContainerGap(66, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 498, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(117, 117, 117)
-                .addComponent(btnactualizarcatalogo)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnRetroceder)
-                        .addGap(90, 90, 90)
-                        .addComponent(lblFiltro)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cboFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnFiltrar)
-                        .addGap(514, 855, Short.MAX_VALUE))))
-        );
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/fondo1.png"))); // NOI18N
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 10, 110, 70));
+
+        lblfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/imagen_fondo.png"))); // NOI18N
+        getContentPane().add(lblfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 1, 1390, 920));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -796,12 +772,14 @@ String marca = txtmarca.getText().trim();
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblFiltro;
     private javax.swing.JLabel lblaño;
     private javax.swing.JLabel lbldescripcion;
+    private javax.swing.JLabel lblfondo;
     private javax.swing.JLabel lblmarca;
     private javax.swing.JLabel lblmodelo1;
     private javax.swing.JLabel lblprecio;

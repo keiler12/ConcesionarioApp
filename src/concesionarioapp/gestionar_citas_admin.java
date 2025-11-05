@@ -1,3 +1,5 @@
+package concesionarioapp;
+
 import concesionarioapp.interfaz_administrador;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -66,9 +68,14 @@ public class gestionar_citas_admin extends javax.swing.JFrame {
         btneditar = new javax.swing.JButton();
         btncancelar = new javax.swing.JButton();
         btnRetroceder = new javax.swing.JButton();
+        lbllogo = new javax.swing.JLabel();
+        lblfondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        tablacitas.setBackground(new java.awt.Color(153, 204, 255));
+        tablacitas.setBorder(javax.swing.BorderFactory.createEtchedBorder(null, new java.awt.Color(0, 0, 0)));
         tablacitas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -84,70 +91,53 @@ public class gestionar_citas_admin extends javax.swing.JFrame {
 
         jScrollPane2.setViewportView(jScrollPane1);
 
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 76, 621, 558));
+
+        btnactualizar.setBackground(new java.awt.Color(153, 204, 255));
+        btnactualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/actualizar.png"))); // NOI18N
         btnactualizar.setText("Actualizar ");
         btnactualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnactualizarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnactualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(709, 111, 139, -1));
 
+        btneditar.setBackground(new java.awt.Color(255, 255, 153));
+        btneditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/editar.png"))); // NOI18N
         btneditar.setText("Editar citas");
         btneditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btneditarActionPerformed(evt);
             }
         });
+        getContentPane().add(btneditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(709, 185, 139, -1));
 
+        btncancelar.setBackground(new java.awt.Color(255, 153, 153));
+        btncancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/cancelar.png"))); // NOI18N
         btncancelar.setText("Cancelar cita");
         btncancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btncancelarActionPerformed(evt);
             }
         });
+        getContentPane().add(btncancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(709, 256, -1, -1));
 
+        btnRetroceder.setBackground(new java.awt.Color(153, 255, 153));
+        btnRetroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/retroceder.png"))); // NOI18N
         btnRetroceder.setText("Retroceder");
         btnRetroceder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRetrocederActionPerformed(evt);
             }
         });
+        getContentPane().add(btnRetroceder, new org.netbeans.lib.awtextra.AbsoluteConstraints(898, 15, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 621, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btncancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btneditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnactualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(216, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnRetroceder)
-                .addGap(167, 167, 167))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(btnRetroceder)
-                        .addGap(65, 65, 65)
-                        .addComponent(btnactualizar)
-                        .addGap(47, 47, 47)
-                        .addComponent(btneditar)
-                        .addGap(44, 44, 44)
-                        .addComponent(btncancelar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 558, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(71, Short.MAX_VALUE))
-        );
+        lbllogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/fondo1.png"))); // NOI18N
+        getContentPane().add(lbllogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, 100, 60));
+
+        lblfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/imagen_fondo.png"))); // NOI18N
+        getContentPane().add(lblfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, -5, 1040, 710));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -161,7 +151,7 @@ public class gestionar_citas_admin extends javax.swing.JFrame {
     modelo.addColumn("Hora");
     modelo.addColumn("Motivo");
 
-    try (BufferedReader br = new BufferedReader(new FileReader("citas.csv"))) {
+    try (BufferedReader br = new BufferedReader(new FileReader("baseDeDatos/citas.csv"))) {
         String linea;
         while ((linea = br.readLine()) != null) {
             String[] datos = linea.split(",");
@@ -210,7 +200,7 @@ public class gestionar_citas_admin extends javax.swing.JFrame {
         modelo.removeRow(fila);
 
         // Reescribe el archivo CSV
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter("citas.csv"))) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("baseDeDatos/citas.csv"))) {
             for (int i = 0; i < modelo.getRowCount(); i++) {
                 bw.write(modelo.getValueAt(i, 0) + "," +
                          modelo.getValueAt(i, 1) + "," +
@@ -264,6 +254,8 @@ public class gestionar_citas_admin extends javax.swing.JFrame {
     private javax.swing.JButton btneditar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblfondo;
+    private javax.swing.JLabel lbllogo;
     private javax.swing.JTable tablacitas;
     // End of variables declaration//GEN-END:variables
 }

@@ -20,6 +20,7 @@ public class sel_usuario extends javax.swing.JFrame {
     public sel_usuario() {
         initComponents();
         lblimagenfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/imagen_fondo.png")));
+
         lbllogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/fondo1.png")));
         
         jPanel1.setBackground(new java.awt.Color(0, 0, 0, 25));
@@ -36,7 +37,6 @@ public class sel_usuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lbllogo = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         cbotipousuario = new javax.swing.JComboBox<>();
         btnaceptar = new javax.swing.JButton();
@@ -45,13 +45,11 @@ public class sel_usuario extends javax.swing.JFrame {
         txtUsuario = new javax.swing.JTextField();
         txtContraseña = new javax.swing.JPasswordField();
         btnRetroceder = new javax.swing.JButton();
+        lbllogo = new javax.swing.JLabel();
         lblimagenfondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lbllogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/fondo1.png"))); // NOI18N
-        getContentPane().add(lbllogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 0, 100, 50));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Seleccionar usuario"));
         jPanel1.setForeground(new java.awt.Color(0,  0, 0, 100));
@@ -59,6 +57,7 @@ public class sel_usuario extends javax.swing.JFrame {
 
         cbotipousuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cliente", "Administrador" }));
 
+        btnaceptar.setBackground(new java.awt.Color(51, 51, 255));
         btnaceptar.setText("Aceptar");
         btnaceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,9 +74,9 @@ public class sel_usuario extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(cbotipousuario, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(cbotipousuario, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
@@ -89,10 +88,10 @@ public class sel_usuario extends javax.swing.JFrame {
                             .addGap(18, 18, 18)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(txtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-                                .addComponent(txtContraseña)))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(138, 138, 138)
-                            .addComponent(btnaceptar))))
+                                .addComponent(txtContraseña))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(136, 136, 136)
+                        .addComponent(btnaceptar)))
                 .addContainerGap(63, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -108,23 +107,29 @@ public class sel_usuario extends javax.swing.JFrame {
                     .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(cbotipousuario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnaceptar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 370, 230));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, 370, 230));
 
-        btnRetroceder.setText("retroceder");
+        btnRetroceder.setBackground(new java.awt.Color(153, 204, 255));
+        btnRetroceder.setForeground(new java.awt.Color(0, 0, 0));
+        btnRetroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/retroceder.png"))); // NOI18N
+        btnRetroceder.setText(" retroceder");
         btnRetroceder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRetrocederActionPerformed(evt);
             }
         });
-        getContentPane().add(btnRetroceder, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 40, -1, -1));
+        getContentPane().add(btnRetroceder, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 10, -1, -1));
+
+        lbllogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/fondo1.png"))); // NOI18N
+        getContentPane().add(lbllogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 20, 100, 60));
 
         lblimagenfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/imagen_fondo.png"))); // NOI18N
-        getContentPane().add(lblimagenfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 480));
+        getContentPane().add(lblimagenfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 530));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -163,7 +168,7 @@ public class sel_usuario extends javax.swing.JFrame {
                         }
                         else{
                             javax.swing.JOptionPane.showMessageDialog(this, "Bienvenido Cliente");
-                            new interfaz_cliente().setVisible(true);
+                            new interfaz_clienteCatalogo().setVisible(true);
                             this.dispose();
                         }
                         break;
@@ -222,4 +227,14 @@ public class sel_usuario extends javax.swing.JFrame {
     private javax.swing.JPasswordField txtContraseña;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
+
+    private static class interfaz_clienteCatalogo {
+
+        public interfaz_clienteCatalogo() {
+        }
+
+        private void setVisible(boolean b) {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+    }
 }
