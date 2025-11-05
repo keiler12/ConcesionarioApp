@@ -1,5 +1,4 @@
-marca,modelo,año,precio,descripcion,imagen
-Ferrari,FKM-00,2014,60.000.000 COP,usado como nuevo,imagenes/Ferrari-348-TB-Dinamarca_42379_7333240584275.jpg
-Ferrari,FR-12,2015,90.000.000 COP,usado como nuevo,imagenes/Ferrari-348-TB-Dinamarca_42379_7333240584275.jpg
-kia,Picanto-EX,2017,29.500.000 COP,Compacto y económico ideal para ciudad,imagenes/0_Kia_Morning_(JA)_FL_1.jpg
-Nissan,Sentra B13,2012,18.000.000 COP,Vehículo clásico mantenimiento reciente económico,imagenes/WhatsApp-Image-2024-08-14-at-12.57.02-PM-1.jpeg
+marca,modelo,año,precio,kilometraje,descripcion,placa,imagen,nombreProp,cedulaProp,telefonoProp,direccionProp,emailProp
+dsdas,dasads,dsadsa,dsasad,dsasda,dsadsa,dsasda,imagenes/Ferrari-348-TB-Dinamarca_42379_7333240584275.jpg,dassad,dsadsa,sdasad,saddsa,sdasda
+dsasda,sadsad,sdasda,dsadsa,sdasda,sdasad,sdasda,imagenes/Ferrari-348-TB-Dinamarca_42379_7333240584275.jpg,dsasda,dsasda,dsasda,dsasaddsasda,dsasdasda
+dsadsa,dsadsa,dsaasd,sadsad,sdasda,dsasad,dsasad,imagenes/WhatsApp-Image-2024-08-14-at-12.57.02-PM-1.jpeg,sdasad,sadsad,dsadsa,dsadsa,sdaads

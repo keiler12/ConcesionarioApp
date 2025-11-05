@@ -1,3 +1,20 @@
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Image;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -21,66 +38,90 @@ public class interfaz_clienteCatagalo extends javax.swing.JFrame {
 }
 
 private void cargarCatalogoCliente() {
-    jPanel2.removeAll();
-    jPanel2.setLayout(new javax.swing.BoxLayout(jPanel2, javax.swing.BoxLayout.Y_AXIS));
+   jPanel2.removeAll(); // Limpia antes de recargar
 
-    java.io.File archivo = new java.io.File("baseDeDatos/coches.csv");
+    // Layout que apila verticalmente los vehículos
+    jPanel2.setLayout(new BoxLayout(jPanel2, BoxLayout.Y_AXIS));
 
-    if (!archivo.exists()) {
-        javax.swing.JLabel msg = new javax.swing.JLabel("No hay vehículos disponibles aún.");
-        jPanel2.add(msg);
-        jPanel2.revalidate();
-        jPanel2.repaint();
-        return;
-    }
+    int contador = 0;
 
-    try (var br = new java.io.BufferedReader(new java.io.FileReader(archivo))) {
+    try (BufferedReader br = new BufferedReader(new FileReader("baseDeDatos/coches.csv"))) {
         String linea;
-        boolean primeraLinea = true;
+        br.readLine(); // Saltar encabezado
+
         while ((linea = br.readLine()) != null) {
-            if (primeraLinea) { 
-                primeraLinea = false; 
-                continue; 
+            String[] datos = linea.split(",");
+
+            if (datos.length < 8) continue;
+
+            String marca = datos[0];
+            String modelo = datos[1];
+            String año = datos[2];
+            String precio = datos[3];
+            String kilometraje = datos[4];
+            String descripcion = datos[5];
+            String placa = datos[6];
+            String rutaImagen = datos[7];
+
+            // Panel individual del vehículo
+            JPanel panelVehiculo = new JPanel(new BorderLayout(10, 10));
+            panelVehiculo.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 1));
+            panelVehiculo.setBackground(Color.WHITE);
+            panelVehiculo.setMaximumSize(new Dimension(Integer.MAX_VALUE, 160)); // Ajusta la altura
+            panelVehiculo.setPreferredSize(new Dimension(550, 160));
+
+            // Imagen
+            JLabel lblImagen = new JLabel();
+            try {
+                ImageIcon icon = new ImageIcon(rutaImagen);
+                Image img = icon.getImage().getScaledInstance(150, 100, Image.SCALE_SMOOTH);
+                lblImagen.setIcon(new ImageIcon(img));
+            } catch (Exception e) {
+                lblImagen.setText("Sin imagen");
             }
 
-            String[] datos = linea.split("[,;]");
+            // Texto
+            JTextArea txtInfoVehiculo = new JTextArea(
+                "Marca: " + marca + "\n" +
+                "Modelo: " + modelo + "\n" +
+                "Año: " + año + "\n" +
+                "Precio: " + precio + "\n" +
+                "Kilometraje: " + kilometraje + "\n" +
+                "Descripción: " + descripcion + "\n" +
+                "Placa: " + placa
+            );
+            txtInfoVehiculo.setEditable(false);
+            txtInfoVehiculo.setBackground(Color.WHITE);
 
+            // Armar panel
+            panelVehiculo.add(lblImagen, BorderLayout.WEST);
+            panelVehiculo.add(txtInfoVehiculo, BorderLayout.CENTER);
 
-            if (datos.length >= 6) {
-                javax.swing.JPanel item = new javax.swing.JPanel();
-                item.setLayout(new java.awt.BorderLayout());
-                item.setBorder(javax.swing.BorderFactory.createTitledBorder(datos[0] + " - " + datos[1]));
+            // Agregar al contenedor
+            jPanel2.add(panelVehiculo);
+            jPanel2.add(Box.createRigidArea(new Dimension(0, 15))); // Espacio entre tarjetas
 
-                javax.swing.JPanel info = new javax.swing.JPanel();
-                info.setLayout(new javax.swing.BoxLayout(info, javax.swing.BoxLayout.Y_AXIS));
-                info.add(new javax.swing.JLabel("Año: " + datos[2]));
-                info.add(new javax.swing.JLabel("Precio: " + datos[3]));
-                info.add(new javax.swing.JLabel("Descripción: " + datos[4]));
-
-                javax.swing.JLabel imagenLabel = new javax.swing.JLabel();
-                java.io.File imagenFile = new java.io.File(datos[5]);
-                if (imagenFile.exists()) {
-                    javax.swing.ImageIcon icon = new javax.swing.ImageIcon(
-                        new javax.swing.ImageIcon(datos[5])
-                            .getImage()
-                            .getScaledInstance(120, 80, java.awt.Image.SCALE_SMOOTH)
-                    );
-                    imagenLabel.setIcon(icon);
-                } else {
-                    imagenLabel.setText("Sin imagen");
-                }
-
-                item.add(imagenLabel, java.awt.BorderLayout.WEST);
-                item.add(info, java.awt.BorderLayout.CENTER);
-                jPanel2.add(item);
-            }
+            contador++;
         }
-    } catch (Exception e) {
-        javax.swing.JOptionPane.showMessageDialog(this, "Error al cargar el catálogo: " + e.getMessage());
+
+    } catch (IOException e) {
+        JOptionPane.showMessageDialog(this, "Error al cargar el catálogo: " + e.getMessage());
     }
+
+    if (contador == 0) {
+        JLabel lblVacio = new JLabel("No hay vehículos disponibles.");
+        lblVacio.setAlignmentX(CENTER_ALIGNMENT);
+        jPanel2.add(lblVacio);
+    }
+
+    // Este es el truco clave: forzar que el panel crezca más que la vista
+    jPanel2.setPreferredSize(new Dimension(jScrollPane1.getWidth() - 30, contador * 180));
 
     jPanel2.revalidate();
     jPanel2.repaint();
+
+    // Asegurar que el scroll se actualice bien
+    jScrollPane1.getVerticalScrollBar().setUnitIncrement(16);
 }
 
 
@@ -123,16 +164,16 @@ private void cargarCatalogoCliente() {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(117, Short.MAX_VALUE))
+                .addGap(60, 60, 60)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(138, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 574, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 503, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         btnactualizar.setText("Actualizar catalogo");
@@ -157,10 +198,10 @@ private void cargarCatalogoCliente() {
                         .addGap(247, 247, 247)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(242, 242, 242)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnagendarcita, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnactualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(259, 259, 259)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnagendarcita, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnactualizar))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -170,11 +211,11 @@ private void cargarCatalogoCliente() {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(76, 76, 76)
                 .addComponent(btnactualizar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addComponent(btnagendarcita)
-                .addGap(31, 31, 31))
+                .addGap(53, 53, 53))
         );
 
         pack();
