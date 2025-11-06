@@ -20,7 +20,8 @@ public class InicioApp extends javax.swing.JFrame {
        lblfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/fondo.png")));
 
     }
-    
+
+        
 
     
     

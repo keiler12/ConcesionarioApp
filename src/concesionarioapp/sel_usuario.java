@@ -168,8 +168,8 @@ public class sel_usuario extends javax.swing.JFrame {
                         }
                         else{
                             javax.swing.JOptionPane.showMessageDialog(this, "Bienvenido Cliente");
-                            new interfaz_clienteCatalogo().setVisible(true);
-                            this.dispose();
+                            interfaz_clienteCatagalo catalogo = new interfaz_clienteCatagalo();
+                            catalogo.setVisible(true);
                         }
                         break;
                     }

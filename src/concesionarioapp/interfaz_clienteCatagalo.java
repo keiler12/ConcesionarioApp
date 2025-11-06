@@ -193,6 +193,11 @@ private void cargarCatalogoCliente() {
         btncerrarsesion.setBackground(new java.awt.Color(255, 51, 51));
         btncerrarsesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/cerrar_sesion.png"))); // NOI18N
         btncerrarsesion.setText("Cerrar sesión");
+        btncerrarsesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncerrarsesionActionPerformed(evt);
+            }
+        });
         getContentPane().add(btncerrarsesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 20, -1, -1));
 
         lbllogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/fondo1.png"))); // NOI18N
@@ -208,6 +213,16 @@ private void cargarCatalogoCliente() {
         // TODO add your handling code here:
         cargarCatalogoCliente();
     }//GEN-LAST:event_btnactualizarActionPerformed
+
+    private void btncerrarsesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncerrarsesionActionPerformed
+        // TODO add your handling code here:
+          // 1. Ocultar la ventana actual (el catálogo del cliente)
+    this.dispose();
+
+    // 2. Crear y mostrar la ventana de inicio de sesión
+    inicioApp inicio = new inicioApp();
+    inicio.setVisible(true);
+    }//GEN-LAST:event_btncerrarsesionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -245,4 +260,14 @@ private void cargarCatalogoCliente() {
     private javax.swing.JLabel lblfondo;
     private javax.swing.JLabel lbllogo;
     // End of variables declaration//GEN-END:variables
+
+    private static class inicioApp {
+
+        public inicioApp() {
+        }
+
+        private void setVisible(boolean b) {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+    }
 }
