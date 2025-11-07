@@ -121,13 +121,14 @@ public class CrearCuenta extends javax.swing.JFrame {
 
         btnRetroceder.setBackground(new java.awt.Color(51, 102, 255));
         btnRetroceder.setForeground(new java.awt.Color(255, 255, 255));
-        btnRetroceder.setText("< Retroceder");
+        btnRetroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/retroceder.png"))); // NOI18N
+        btnRetroceder.setText(" Retroceder");
         btnRetroceder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRetrocederActionPerformed(evt);
             }
         });
-        getContentPane().add(btnRetroceder, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 10, -1, -1));
+        getContentPane().add(btnRetroceder, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 10, -1, -1));
 
         lbllogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/fondo1.png"))); // NOI18N
         getContentPane().add(lbllogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, 100, 60));

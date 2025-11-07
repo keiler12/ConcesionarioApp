@@ -100,6 +100,8 @@ public class gestionar_vehiculos extends javax.swing.JFrame {
         txtFiltro = new javax.swing.JTextField();
         btnFiltrar = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
+        btnEditar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
         lblfondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -192,7 +194,7 @@ public class gestionar_vehiculos extends javax.swing.JFrame {
                                         .addComponent(txtDireccionProp, javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(txtEmailProp, javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(txtCedulaProp, javax.swing.GroupLayout.Alignment.LEADING))
-                                    .addComponent(txtNombreProp)))))
+                                    .addComponent(txtNombreProp, javax.swing.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(81, 81, 81)
                         .addComponent(btnguardarvehiculo))
@@ -269,11 +271,11 @@ public class gestionar_vehiculos extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 990, Short.MAX_VALUE)
+            .addGap(0, 974, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 692, Short.MAX_VALUE)
+            .addGap(0, 698, Short.MAX_VALUE)
         );
 
         jScrollPane1.setViewportView(jPanel2);
@@ -331,6 +333,12 @@ public class gestionar_vehiculos extends javax.swing.JFrame {
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/fondo1.png"))); // NOI18N
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 10, 110, 70));
+
+        btnEditar.setText("Editar");
+        getContentPane().add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 680, 90, -1));
+
+        btnEliminar.setText("Eliminar");
+        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 680, -1, -1));
 
         lblfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/imagen_fondo.png"))); // NOI18N
         getContentPane().add(lblfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1390, 910));
@@ -796,6 +804,8 @@ try (BufferedReader br = new BufferedReader(new FileReader("baseDeDatos/coches.c
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnFiltrar;
     private javax.swing.JButton btnRetroceder;
     private javax.swing.JButton btnactualizarcatalogo;

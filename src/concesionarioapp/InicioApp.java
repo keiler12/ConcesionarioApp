@@ -45,29 +45,35 @@ public class InicioApp extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnentrar.setBackground(new java.awt.Color(51, 153, 255));
+        btnentrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/entrar.png"))); // NOI18N
         btnentrar.setText("Entrar");
         btnentrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnentrarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnentrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, 170, -1));
+        getContentPane().add(btnentrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 380, 180, -1));
 
+        btnCrearUsuario.setBackground(new java.awt.Color(153, 204, 255));
+        btnCrearUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/usuarios.png"))); // NOI18N
         btnCrearUsuario.setText("Crear Usuario");
         btnCrearUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCrearUsuarioActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCrearUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 410, -1, -1));
+        getContentPane().add(btnCrearUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 420, 130, 20));
 
+        btnSalir.setBackground(new java.awt.Color(255, 51, 51));
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/cerrar_sesion.png"))); // NOI18N
         btnSalir.setText("Cerrar sesión");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalirActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 450, -1, -1));
+        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 450, 150, 20));
 
         lblfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/fondo.png"))); // NOI18N
         getContentPane().add(lblfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, -1));

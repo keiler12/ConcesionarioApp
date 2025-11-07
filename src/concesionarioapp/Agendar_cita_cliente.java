@@ -72,6 +72,7 @@ public class Agendar_cita_cliente extends javax.swing.JFrame {
 
         btnAgendar.setBackground(new java.awt.Color(153, 255, 153));
         btnAgendar.setForeground(new java.awt.Color(0, 0, 0));
+        btnAgendar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/citas.png"))); // NOI18N
         btnAgendar.setText("Agendar cita");
         btnAgendar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,6 +130,7 @@ public class Agendar_cita_cliente extends javax.swing.JFrame {
 
         btnLimpiar.setBackground(new java.awt.Color(255, 51, 51));
         btnLimpiar.setForeground(new java.awt.Color(0, 0, 0));
+        btnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/limpiar.png"))); // NOI18N
         btnLimpiar.setText("limpiar");
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,13 +142,15 @@ public class Agendar_cita_cliente extends javax.swing.JFrame {
         lbllogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/fondo1.png"))); // NOI18N
         getContentPane().add(lbllogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, 110, 50));
 
+        btnRetroceder.setBackground(new java.awt.Color(204, 255, 255));
+        btnRetroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/retroceder.png"))); // NOI18N
         btnRetroceder.setText("Retroceder");
         btnRetroceder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRetrocederActionPerformed(evt);
             }
         });
-        getContentPane().add(btnRetroceder, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 20, -1, -1));
+        getContentPane().add(btnRetroceder, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 10, -1, -1));
 
         lblfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/imagen_fondo.png"))); // NOI18N
         lblfondo.setBorder(javax.swing.BorderFactory.createEtchedBorder());

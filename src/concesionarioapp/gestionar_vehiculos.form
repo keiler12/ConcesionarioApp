@@ -90,7 +90,7 @@
                                           <Component id="txtEmailProp" alignment="0" max="32767" attributes="0"/>
                                           <Component id="txtCedulaProp" alignment="0" max="32767" attributes="0"/>
                                       </Group>
-                                      <Component id="txtNombreProp" max="32767" attributes="0"/>
+                                      <Component id="txtNombreProp" pref="87" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -318,12 +318,12 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="990" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="974" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="692" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="698" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -443,6 +443,26 @@
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="760" y="10" width="110" height="70"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnEditar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Editar"/>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="650" y="680" width="90" height="-1"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnEliminar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Eliminar"/>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="800" y="680" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
