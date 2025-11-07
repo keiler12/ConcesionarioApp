@@ -48,6 +48,7 @@ public class Agendar_cita_cliente extends javax.swing.JFrame {
         cboPeriodo = new javax.swing.JComboBox<>();
         btnLimpiar = new javax.swing.JButton();
         lbllogo = new javax.swing.JLabel();
+        btnRetroceder = new javax.swing.JButton();
         lblfondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -80,7 +81,7 @@ public class Agendar_cita_cliente extends javax.swing.JFrame {
         getContentPane().add(btnAgendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 420, -1, -1));
 
         lblMotivo.setForeground(new java.awt.Color(0, 0, 0));
-        lblMotivo.setText("Motido de cita");
+        lblMotivo.setText("Motivo de cita");
         getContentPane().add(lblMotivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 122, -1));
 
         txtNombre.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -117,7 +118,7 @@ public class Agendar_cita_cliente extends javax.swing.JFrame {
 
         cboMotivo.setBackground(new java.awt.Color(51, 153, 255));
         cboMotivo.setForeground(new java.awt.Color(0, 0, 0));
-        cboMotivo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ver vehículo en venta", "Cotizar vehículo usado", "Prueba de manejo", "Negociar precio o financiación", "Documentación", "Otro", " " }));
+        cboMotivo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ver vehículo en venta", "Cotizar vehículo usado", "Prueba de manejo", "Negociar precio o financiación", "Documentación", "Otro" }));
         cboMotivo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         getContentPane().add(cboMotivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 320, -1, -1));
 
@@ -138,6 +139,14 @@ public class Agendar_cita_cliente extends javax.swing.JFrame {
 
         lbllogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/fondo1.png"))); // NOI18N
         getContentPane().add(lbllogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, 110, 50));
+
+        btnRetroceder.setText("Retroceder");
+        btnRetroceder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRetrocederActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnRetroceder, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 20, -1, -1));
 
         lblfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/imagen_fondo.png"))); // NOI18N
         lblfondo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -282,6 +291,13 @@ public class Agendar_cita_cliente extends javax.swing.JFrame {
             cboMotivo.setSelectedIndex(0);
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
+    private void btnRetrocederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetrocederActionPerformed
+        // TODO add your handling code here:
+        interfaz_clienteCatagalo catalogo = new interfaz_clienteCatagalo();
+        catalogo.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnRetrocederActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -310,6 +326,7 @@ public class Agendar_cita_cliente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgendar;
     private javax.swing.JButton btnLimpiar;
+    private javax.swing.JButton btnRetroceder;
     private javax.swing.JComboBox<String> cboMotivo;
     private javax.swing.JComboBox<String> cboPeriodo;
     private javax.swing.JLabel lblFecha;

@@ -29,7 +29,19 @@ public class gestionar_citas_admin extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         cargarCitasEnTabla();
+        
+        cboMotivo.setVisible(false);
+        txtFiltro.setVisible(false);
     }
+    
+    private boolean validarHora(String hora) {
+    return hora.matches("^([01]?\\d|2[0-3]):[0-5]\\d$");
+}
+
+// Validar formato de fecha (DD/MM/AAAA)
+private boolean validarFecha(String fecha) {
+    return fecha.matches("^(0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[0-2])/\\d{4}$");
+}
     
     private void cargarCitasEnTabla() {
     DefaultTableModel modelo = (DefaultTableModel) tablacitas.getModel();
@@ -69,6 +81,11 @@ public class gestionar_citas_admin extends javax.swing.JFrame {
         btncancelar = new javax.swing.JButton();
         btnRetroceder = new javax.swing.JButton();
         lbllogo = new javax.swing.JLabel();
+        lblFiltro = new javax.swing.JLabel();
+        cboFiltro = new javax.swing.JComboBox<>();
+        txtFiltro = new javax.swing.JTextField();
+        btnFiltrar = new javax.swing.JButton();
+        cboMotivo = new javax.swing.JComboBox<>();
         lblfondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -135,6 +152,39 @@ public class gestionar_citas_admin extends javax.swing.JFrame {
 
         lbllogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/fondo1.png"))); // NOI18N
         getContentPane().add(lbllogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, 100, 60));
+
+        lblFiltro.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblFiltro.setText("Filtro");
+        getContentPane().add(lblFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 310, 60, -1));
+
+        cboFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todo", "Nombre", "Cedula", "Fecha", "Hora", "Motivo" }));
+        cboFiltro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboFiltroActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cboFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 350, -1, -1));
+
+        txtFiltro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFiltroActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 380, 110, -1));
+
+        btnFiltrar.setText("Filtrar");
+        btnFiltrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFiltrarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnFiltrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 440, -1, -1));
+
+        cboMotivo.setBackground(new java.awt.Color(51, 153, 255));
+        cboMotivo.setForeground(new java.awt.Color(0, 0, 0));
+        cboMotivo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ver vehículo en venta", "Cotizar vehículo usado", "Prueba de manejo", "Negociar precio o financiación", "Documentación", "Otro" }));
+        cboMotivo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        getContentPane().add(cboMotivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 410, 140, -1));
 
         lblfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/imagen_fondo.png"))); // NOI18N
         getContentPane().add(lblfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, -5, 1040, 710));
@@ -222,6 +272,135 @@ public class gestionar_citas_admin extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnRetrocederActionPerformed
 
+    private void cboFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboFiltroActionPerformed
+        // TODO add your handling code here:
+        String seleccion = cboFiltro.getSelectedItem().toString();
+
+    // Ocultar todo por defecto
+    txtFiltro.setVisible(false);
+    cboMotivo.setVisible(false);
+
+    switch (seleccion) {
+        case "Todo" -> {
+            }
+
+        case "Motivo" -> cboMotivo.setVisible(true);
+
+        case "Fecha" -> {
+            txtFiltro.setVisible(true);
+            txtFiltro.setText("DD/MM/AAAA");
+            }
+
+        case "Hora" -> {
+            txtFiltro.setVisible(true);
+            txtFiltro.setText("HH:MM");
+            }
+
+        default -> {
+            // Nombre o Cédula
+            txtFiltro.setVisible(true);
+            txtFiltro.setText("");
+            }
+    }
+        // No muestra nada extra
+
+    txtFiltro.revalidate();
+    txtFiltro.repaint();
+    }//GEN-LAST:event_cboFiltroActionPerformed
+
+    private void btnFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrarActionPerformed
+        // TODO add your handling code here:
+            // 1️⃣ Obtenemos la opción elegida del combo principal
+    String filtro = cboFiltro.getSelectedItem().toString();
+
+    // 2️⃣ Obtenemos el texto escrito en el campo (si aplica)
+    String texto = txtFiltro.getText().trim();
+
+    // 3️⃣ Obtenemos el motivo seleccionado (solo si se eligió "Motivo")
+    String motivoSeleccionado = (String) cboMotivo.getSelectedItem();
+
+    // 4️⃣ Creamos el modelo nuevo para mostrar los resultados filtrados
+    DefaultTableModel modeloFiltrado = new DefaultTableModel();
+    modeloFiltrado.addColumn("Nombre");
+    modeloFiltrado.addColumn("Cedula");
+    modeloFiltrado.addColumn("Fecha");
+    modeloFiltrado.addColumn("Hora");
+    modeloFiltrado.addColumn("Descripcion");
+
+    // 5️⃣ Si el filtro es "Todo", recargamos todas las citas y salimos
+    if (filtro.equals("Todo")) {
+        cargarCitasEnTabla(); // usa tu método existente
+        return;
+    }
+
+    // 6️⃣ Validar si el usuario dejó vacío el campo cuando se requiere
+    if (!filtro.equals("Motivo") && texto.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Debe ingresar un valor para filtrar.", "Campo vacío", JOptionPane.WARNING_MESSAGE);
+        return;
+    }
+
+    // 7️⃣ Validar formato de fecha u hora según lo elegido
+    if (filtro.equals("Fecha") && !validarFecha(texto)) {
+        JOptionPane.showMessageDialog(this, "Formato de fecha incorrecto. Use DD/MM/AAAA", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    if (filtro.equals("Hora") && !validarHora(texto)) {
+        JOptionPane.showMessageDialog(this, "Formato de hora incorrecto. Use HH:MM", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // 8️⃣ Leer el archivo CSV y filtrar según la opción seleccionada
+    try (BufferedReader br = new BufferedReader(new FileReader("baseDeDatos/citas.csv"))) {
+        String linea;
+        boolean encontrado = false; // para saber si hubo coincidencias
+
+        while ((linea = br.readLine()) != null) {
+            String[] datos = linea.split(",");
+
+            if (datos.length < 5) continue; // seguridad por si hay líneas vacías
+
+            String nombre = datos[0];
+            String cedula = datos[1];
+            String fecha = datos[2];
+            String hora = datos[3];
+            String descripcion = datos[4];
+
+            boolean coincide = false; // bandera de coincidencia
+
+            // 🔍 9️⃣ Filtramos según lo elegido
+            switch (filtro) {
+                case "Nombre" -> coincide = nombre.toLowerCase().contains(texto.toLowerCase());
+                case "Cedula" -> coincide = cedula.equalsIgnoreCase(texto);
+                case "Fecha" -> coincide = fecha.equals(texto);
+                case "Hora" -> coincide = hora.equals(texto);
+                case "Motivo" -> coincide = descripcion.equalsIgnoreCase(motivoSeleccionado);
+            }
+
+            // 🔹 Si coincide, agregamos la fila al modelo filtrado
+            if (coincide) {
+                modeloFiltrado.addRow(new Object[]{nombre, cedula, fecha, hora, descripcion});
+                encontrado = true;
+            }
+        }
+
+        // 🔟 Si no se encontró nada, avisamos al usuario
+        if (!encontrado) {
+            JOptionPane.showMessageDialog(this, "No se encontró ningún resultado con el filtro aplicado.", "Sin resultados", JOptionPane.INFORMATION_MESSAGE);
+        }
+
+        // 1️⃣1️⃣ Finalmente, mostramos el resultado (vacío o con datos)
+        tablacitas.setModel(modeloFiltrado);
+
+    } catch (IOException e) {
+        JOptionPane.showMessageDialog(this, "Error al filtrar citas: " + e.getMessage());
+    }
+    }//GEN-LAST:event_btnFiltrarActionPerformed
+
+    private void txtFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFiltroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFiltroActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -248,14 +427,19 @@ public class gestionar_citas_admin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnFiltrar;
     private javax.swing.JButton btnRetroceder;
     private javax.swing.JButton btnactualizar;
     private javax.swing.JButton btncancelar;
     private javax.swing.JButton btneditar;
+    private javax.swing.JComboBox<String> cboFiltro;
+    private javax.swing.JComboBox<String> cboMotivo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblFiltro;
     private javax.swing.JLabel lblfondo;
     private javax.swing.JLabel lbllogo;
     private javax.swing.JTable tablacitas;
+    private javax.swing.JTextField txtFiltro;
     // End of variables declaration//GEN-END:variables
 }

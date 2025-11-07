@@ -4,6 +4,8 @@
  */
 package concesionarioapp;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Reverie Pink
@@ -37,6 +39,7 @@ public class InicioApp extends javax.swing.JFrame {
 
         btnentrar = new javax.swing.JButton();
         btnCrearUsuario = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
         lblfondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -56,7 +59,15 @@ public class InicioApp extends javax.swing.JFrame {
                 btnCrearUsuarioActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCrearUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 460, -1, -1));
+        getContentPane().add(btnCrearUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 410, -1, -1));
+
+        btnSalir.setText("Cerrar sesión");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 450, -1, -1));
 
         lblfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/fondo.png"))); // NOI18N
         getContentPane().add(lblfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, -1));
@@ -79,6 +90,21 @@ public class InicioApp extends javax.swing.JFrame {
         CrearCuenta.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnCrearUsuarioActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        // TODO add your handling code here:
+        int respuesta = JOptionPane.showConfirmDialog(
+            this,
+            "¿Seguro que deseas cerrar el programa?",
+            "Confirmar salida",
+            JOptionPane.YES_NO_OPTION,
+            JOptionPane.QUESTION_MESSAGE
+    );
+
+    if (respuesta == JOptionPane.YES_OPTION) {
+        System.exit(0);
+    }
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -107,6 +133,7 @@ public class InicioApp extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCrearUsuario;
+    private javax.swing.JButton btnSalir;
     private javax.swing.JButton btnentrar;
     private javax.swing.JLabel lblfondo;
     // End of variables declaration//GEN-END:variables

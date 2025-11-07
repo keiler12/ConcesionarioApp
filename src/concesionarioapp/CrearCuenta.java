@@ -169,13 +169,15 @@ public class CrearCuenta extends javax.swing.JFrame {
 
     private void guardarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarDatosActionPerformed
         // TODO add your handling code here:
+        String nombre = txtNombre.getText();
+        String apellido = txtApellido.getText();
         String NombreUsuario = txtNombreUsuario.getText();
         String Contraseña = txtContraseña.getText();
         String tipoUsuario = cboTipoUsuario.getSelectedItem().toString();
         String Codigo = txtCodigo.getText();
         String codigoSeguridad = "3067863";
         
-        if (NombreUsuario.isEmpty() || Contraseña.isEmpty() || tipoUsuario.isEmpty()) {
+        if (nombre.isEmpty() || apellido.isEmpty() || NombreUsuario.isEmpty() || Contraseña.isEmpty() || tipoUsuario.isEmpty()) {
             javax.swing.JOptionPane.showMessageDialog(this, "Por favor, completa todos los campos.");
         }
         if (tipoUsuario.equals("Administrador")){

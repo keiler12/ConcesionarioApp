@@ -30,7 +30,7 @@ public class interfaz_administrador extends javax.swing.JFrame {
 
         jPanel2 = new javax.swing.JPanel();
         btngestionusuarios1 = new javax.swing.JButton();
-        btngestionusuarios2 = new javax.swing.JButton();
+        btnGestionarVehiculos = new javax.swing.JButton();
         btngestionarcitas = new javax.swing.JButton();
         btnCerrarSesion = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -51,9 +51,14 @@ public class interfaz_administrador extends javax.swing.JFrame {
             }
         });
 
-        btngestionusuarios2.setBackground(new java.awt.Color(255, 204, 204));
-        btngestionusuarios2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/vehiculos.png"))); // NOI18N
-        btngestionusuarios2.setText("Gestionar vehiculos");
+        btnGestionarVehiculos.setBackground(new java.awt.Color(255, 204, 204));
+        btnGestionarVehiculos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/vehiculos.png"))); // NOI18N
+        btnGestionarVehiculos.setText("Gestionar vehiculos");
+        btnGestionarVehiculos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGestionarVehiculosActionPerformed(evt);
+            }
+        });
 
         btngestionarcitas.setBackground(new java.awt.Color(204, 204, 204));
         btngestionarcitas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/citas.png"))); // NOI18N
@@ -72,7 +77,7 @@ public class interfaz_administrador extends javax.swing.JFrame {
                 .addGap(158, 158, 158)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(btngestionusuarios1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btngestionusuarios2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnGestionarVehiculos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btngestionarcitas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(183, Short.MAX_VALUE))
         );
@@ -82,8 +87,8 @@ public class interfaz_administrador extends javax.swing.JFrame {
                 .addGap(23, 23, 23)
                 .addComponent(btngestionusuarios1)
                 .addGap(63, 63, 63)
-                .addComponent(btngestionusuarios2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
+                .addComponent(btnGestionarVehiculos)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
                 .addComponent(btngestionarcitas)
                 .addGap(37, 37, 37))
         );
@@ -126,8 +131,17 @@ public class interfaz_administrador extends javax.swing.JFrame {
 
     private void btngestionarcitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btngestionarcitasActionPerformed
         // TODO add your handling code here:
-     
+     gestionar_citas_admin gestionarCitas = new gestionar_citas_admin();
+     gestionarCitas.setVisible(true);
+     this.dispose();
     }//GEN-LAST:event_btngestionarcitasActionPerformed
+
+    private void btnGestionarVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarVehiculosActionPerformed
+        // TODO add your handling code here:
+        gestionar_vehiculos gestionarVehiculos = new gestionar_vehiculos();
+        gestionarVehiculos.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnGestionarVehiculosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -156,9 +170,9 @@ public class interfaz_administrador extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrarSesion;
+    private javax.swing.JButton btnGestionarVehiculos;
     private javax.swing.JButton btngestionarcitas;
     private javax.swing.JButton btngestionusuarios1;
-    private javax.swing.JButton btngestionusuarios2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblfondo;

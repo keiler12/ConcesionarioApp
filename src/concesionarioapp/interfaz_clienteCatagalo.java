@@ -37,6 +37,13 @@ public class interfaz_clienteCatagalo extends javax.swing.JFrame {
     initComponents();
     jPanel2.setLayout(new javax.swing.BoxLayout(jPanel2, javax.swing.BoxLayout.Y_AXIS));
     cargarCatalogoCliente();
+    
+    if (cboFiltro.getSelectedItem() != null && 
+            cboFiltro.getSelectedItem().toString().equalsIgnoreCase("Todo")) {
+            txtFiltro.setVisible(false);
+        } else {
+            txtFiltro.setVisible(true);
+        }
 }
 
 private void cargarCatalogoCliente() {
@@ -147,6 +154,10 @@ private void cargarCatalogoCliente() {
         btnagendarcita = new javax.swing.JButton();
         btncerrarsesion = new javax.swing.JButton();
         lbllogo = new javax.swing.JLabel();
+        lblFiltro = new javax.swing.JLabel();
+        cboFiltro = new javax.swing.JComboBox<>();
+        txtFiltro = new javax.swing.JTextField();
+        btnFiltrar = new javax.swing.JButton();
         lblfondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -179,7 +190,7 @@ private void cargarCatalogoCliente() {
                 btnactualizarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnactualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 630, -1, -1));
+        getContentPane().add(btnactualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 620, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Catálogo de Vehículos - Cliente ");
@@ -188,7 +199,12 @@ private void cargarCatalogoCliente() {
         btnagendarcita.setBackground(new java.awt.Color(255, 255, 204));
         btnagendarcita.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/citas.png"))); // NOI18N
         btnagendarcita.setText("Agendar citas");
-        getContentPane().add(btnagendarcita, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 700, 159, -1));
+        btnagendarcita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnagendarcitaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnagendarcita, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 690, 159, -1));
 
         btncerrarsesion.setBackground(new java.awt.Color(255, 51, 51));
         btncerrarsesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/cerrar_sesion.png"))); // NOI18N
@@ -203,6 +219,29 @@ private void cargarCatalogoCliente() {
         lbllogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/fondo1.png"))); // NOI18N
         getContentPane().add(lbllogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 30, 100, 70));
 
+        lblFiltro.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblFiltro.setText("Filtro");
+        getContentPane().add(lblFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 620, 60, -1));
+
+        cboFiltro.setBackground(new java.awt.Color(102, 204, 255));
+        cboFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todo", "Marca", "Modelo", "Año", "Precio" }));
+        cboFiltro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboFiltroActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cboFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 660, -1, -1));
+        getContentPane().add(txtFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 690, 130, -1));
+
+        btnFiltrar.setBackground(new java.awt.Color(204, 255, 255));
+        btnFiltrar.setText("Filtrar");
+        btnFiltrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFiltrarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnFiltrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 720, -1, -1));
+
         lblfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/concesionarioapp/imagen_fondo.png"))); // NOI18N
         getContentPane().add(lblfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 780));
 
@@ -216,13 +255,152 @@ private void cargarCatalogoCliente() {
 
     private void btncerrarsesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncerrarsesionActionPerformed
         // TODO add your handling code here:
-          // 1. Ocultar la ventana actual (el catálogo del cliente)
-    this.dispose();
-
-    // 2. Crear y mostrar la ventana de inicio de sesión
-    inicioApp inicio = new inicioApp();
-    inicio.setVisible(true);
+        InicioApp inicio = new InicioApp();
+        inicio.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btncerrarsesionActionPerformed
+
+    private void btnagendarcitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnagendarcitaActionPerformed
+        // TODO add your handling code here:
+        Agendar_cita_cliente agendarCita = new Agendar_cita_cliente();
+        agendarCita.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnagendarcitaActionPerformed
+
+    private void cboFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboFiltroActionPerformed
+        // TODO add your handling code here:
+        String seleccion = "";
+        if (cboFiltro.getSelectedItem() != null) {
+            seleccion = cboFiltro.getSelectedItem().toString().trim();
+        }
+
+        if (seleccion.equalsIgnoreCase("Todo")) {
+            txtFiltro.setVisible(false);
+            txtFiltro.setText("");
+        } else {
+            txtFiltro.setVisible(true);
+            txtFiltro.setText("");
+            txtFiltro.requestFocusInWindow();
+        }
+
+        // Forzamos actualización del layout por si el GroupLayout no refresca solo
+        if (txtFiltro.getParent() != null) {
+            txtFiltro.getParent().revalidate();
+            txtFiltro.getParent().repaint();
+        }
+    }//GEN-LAST:event_cboFiltroActionPerformed
+
+    private void btnFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrarActionPerformed
+        // Obtener el tipo de filtro seleccionado (Todo, Marca, Modelo, etc.)
+String tipoFiltro = cboFiltro.getSelectedItem().toString();
+String valorFiltro = txtFiltro.getText().trim().toLowerCase();
+
+// Validar que el campo no esté vacío si corresponde
+if (!tipoFiltro.equalsIgnoreCase("todo") && !tipoFiltro.equalsIgnoreCase("motivo")) {
+    if (valorFiltro.isEmpty()) {
+        JOptionPane.showMessageDialog(this, 
+            "Por favor ingrese un valor para filtrar.", 
+            "Campo vacío", 
+            JOptionPane.WARNING_MESSAGE);
+        return;
+    }
+}
+
+// Limpiar panel antes de mostrar los resultados
+jPanel2.removeAll();
+jPanel2.setLayout(new BoxLayout(jPanel2, BoxLayout.Y_AXIS));
+int contador = 0;
+
+try (BufferedReader br = new BufferedReader(new FileReader("baseDeDatos/coches.csv"))) {
+    String linea;
+    br.readLine(); // Saltar encabezado del CSV
+
+    while ((linea = br.readLine()) != null) {
+        String[] datos = linea.split(",");
+        if (datos.length < 8) continue; // Saltar líneas incompletas
+
+        // Asignar valores del archivo CSV
+        String marca = datos[0];
+        String modelo = datos[1];
+        String año = datos[2];
+        String precio = datos[3];
+        String kilometraje = datos[4];
+        String descripcion = datos[5];
+        String placa = datos[6];
+        String rutaImagen = datos[7];
+
+        // Validar coincidencia según tipo de filtro
+        boolean coincide = switch (tipoFiltro.toLowerCase()) {
+            case "todo" -> true;
+            case "marca" -> marca.toLowerCase().contains(valorFiltro);
+            case "modelo" -> modelo.toLowerCase().contains(valorFiltro);
+            case "año" -> año.toLowerCase().contains(valorFiltro);
+            case "precio" -> precio.toLowerCase().contains(valorFiltro);
+            default -> true;
+        };
+
+        // Si el registro coincide con el filtro, mostrarlo en el panel
+        if (coincide) {
+            JPanel panelVehiculo = new JPanel(new BorderLayout(10, 10));
+            panelVehiculo.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 1));
+            panelVehiculo.setBackground(Color.WHITE);
+            panelVehiculo.setMaximumSize(new Dimension(Integer.MAX_VALUE, 160));
+            panelVehiculo.setPreferredSize(new Dimension(550, 160));
+
+            // Mostrar imagen
+            JLabel lblImagen = new JLabel();
+            try {
+                ImageIcon icon = new ImageIcon(rutaImagen);
+                Image img = icon.getImage().getScaledInstance(150, 100, Image.SCALE_SMOOTH);
+                lblImagen.setIcon(new ImageIcon(img));
+            } catch (Exception e) {
+                lblImagen.setText("Sin imagen");
+            }
+
+            // Mostrar información del vehículo
+            JTextArea txtInfoVehiculo = new JTextArea(
+                "Marca: " + marca + "\n" +
+                "Modelo: " + modelo + "\n" +
+                "Año: " + año + "\n" +
+                "Precio: " + precio + "\n" +
+                "Kilometraje: " + kilometraje + "\n" +
+                "Descripción: " + descripcion + "\n" +
+                "Placa: " + placa
+            );
+            txtInfoVehiculo.setEditable(false);
+            txtInfoVehiculo.setBackground(Color.WHITE);
+
+            panelVehiculo.add(lblImagen, BorderLayout.WEST);
+            panelVehiculo.add(txtInfoVehiculo, BorderLayout.CENTER);
+
+            jPanel2.add(panelVehiculo);
+            jPanel2.add(Box.createRigidArea(new Dimension(0, 15)));
+
+            contador++;
+        }
+    }
+} catch (IOException e) {
+    JOptionPane.showMessageDialog(this, "Error al filtrar: " + e.getMessage());
+}
+
+// Mostrar mensaje si no se encontró ningún resultado
+if (contador == 0) {
+    JOptionPane.showMessageDialog(this,
+        "No se encontraron resultados con el filtro seleccionado.",
+        "Sin resultados",
+        JOptionPane.INFORMATION_MESSAGE);
+
+    JLabel lblVacio = new JLabel("No se encontraron vehículos con ese filtro.");
+    lblVacio.setAlignmentX(CENTER_ALIGNMENT);
+    jPanel2.add(lblVacio);
+}
+
+// Ajustar diseño del panel con los resultados
+jPanel2.setPreferredSize(new Dimension(jScrollPane1.getWidth() - 30, contador * 180));
+jPanel2.revalidate();
+jPanel2.repaint();
+jScrollPane1.getVerticalScrollBar().setUnitIncrement(16);
+    }//GEN-LAST:event_btnFiltrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -250,15 +428,19 @@ private void cargarCatalogoCliente() {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnFiltrar;
     private javax.swing.JButton btnactualizar;
     private javax.swing.JButton btnagendarcita;
     private javax.swing.JButton btncerrarsesion;
+    private javax.swing.JComboBox<String> cboFiltro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblFiltro;
     private javax.swing.JLabel lblfondo;
     private javax.swing.JLabel lbllogo;
+    private javax.swing.JTextField txtFiltro;
     // End of variables declaration//GEN-END:variables
 
     private static class inicioApp {
